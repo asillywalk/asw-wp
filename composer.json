@@ -1,0 +1,45 @@
+{
+    "name": "sillynet/asillywalk",
+    "description": "Wordpress theme for asillywalk.de",
+    "type": "project",
+    "require": {
+        "wecodemore/wpstarter": "^2.4",
+        "johnpbloch/wordpress-core": "5.9.*@stable"
+    },
+    "license": "UNLICENSED",
+    "authors": [
+        {
+            "name": "andi",
+            "email": "andi@asillywalk.de"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "johnpbloch/wordpress-core-installer": true
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "WCM\\WPStarter\\Setup::run",
+            "bin/post-install.sh"
+        ],
+        "post-update-cmd": "WCM\\WPStarter\\Setup::run"
+    },
+    "extra": {
+        "wordpress-install-dir": "public/wordpress",
+        "wordpress-content-dir": "public/wp-content",
+        "wpstarter": {
+            "prevent-overwrite": [
+                ".gitignore",
+                "public/wp-config.php",
+                "public/index.php"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Sillynet\\": "theme/classes"
+        }
+    }
+}

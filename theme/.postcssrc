@@ -1,0 +1,14 @@
+{
+    "map": "sourcesContent",
+    "plugins": {
+        "autoprefixer": {
+            "grid": true
+        },
+        "postcss-flexbugs-fixes": {},
+        "postcss-focus-within": {},
+        "cssnano": {
+            "preset": "default"
+        },
+        "@gebruederheitz/postcss-pkg-version-to-stylesheet": {}
+    }
+}
