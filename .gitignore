@@ -1,1 +1,6 @@
 /vendor/
+public/wordpress/
+theme/node_modules/
+public/wp-content/uploads/
+public/wp-content/languages/
+public/wp-content/plugins/
