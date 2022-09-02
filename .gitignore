@@ -1,13 +1,20 @@
+# Vendor files and 3rd party packages
 /vendor/
-public/wordpress/
 theme/node_modules/
+
+# Wordpress installation and instance data
+public/wordpress/
 public/wp-content/uploads/
 public/wp-content/languages/
 public/wp-content/plugins/
+/**/debug.log
+
+# Configuration
 .env
 
-debug.log
-*.bak
+# Backup files
+/**/*.bak
+
 
 # IDE
 .idea/
@@ -18,5 +25,3 @@ public/wp-content/themes/asillywalk/style-editor.css*
 public/wp-content/themes/asillywalk/js/editor.js*
 
 
-# temporary: nested package vendor directories
-packages/*/vendor/
