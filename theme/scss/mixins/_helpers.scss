@@ -1,0 +1,71 @@
+@use "sass:map";
+@use "../variables";
+
+// Hide visually, not for screenreaders
+@mixin visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+// 'Undo' visuallyhidden
+@mixin not-visually-hidden {
+    clip: auto;
+    clip-path: none;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    white-space: inherit;
+    width: auto;
+}
+
+/*
+ *  Written by yellowled
+ *  and shamelessly ripped off by andi
+ */
+@mixin unstyled-button($fg: inherit) {
+    background: transparent;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 0;
+    color: $fg;
+    display: inline-block;
+    font-size: inherit;
+    line-height: normal;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+    text-shadow: none;
+    width: auto;
+
+    &:active,
+    &:hover,
+    &:focus {
+        background: transparent;
+        color: $fg;
+        text-decoration: underline;
+    }
+
+    &:focus {
+        box-shadow: none;
+        z-index: auto;
+    }
+}
+
+@mixin unstyled-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin z-index($componentName) {
+    z-index: map.get(variables.$z-indices, $componentName)
+}

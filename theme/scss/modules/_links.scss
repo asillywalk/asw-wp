@@ -1,0 +1,13 @@
+@use "../mixins/decorators";
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+
+    @include decorators.animated-underline;
+
+    &:visited {
+        color: inherit;
+    }
+}

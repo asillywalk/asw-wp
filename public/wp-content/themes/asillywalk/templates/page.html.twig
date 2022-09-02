@@ -1,0 +1,12 @@
+{% set asw_css_hero = true %}
+{% block content %}
+
+    {% include 'components/floating-menu' %}
+
+    {% if show_page_hero %}
+        <section class="section section--hero"></section>
+    {% endif %}
+
+    {{ the_content() }}
+
+{% endblock %}

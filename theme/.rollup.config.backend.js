@@ -1,15 +1,15 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
     external: ['wp'],
-    input: 'js/backend.js',
+    input: 'js/editor.js',
     output: {
-        file: '../public/wp-content/themes/ghwp/js/backend.js',
+        file: '../public/wp-content/themes/asillywalk/js/editor.js',
         format: 'iife',
         sourcemap: true,
         globals: {
@@ -23,6 +23,7 @@ export default {
             exclude: 'node_modules/**',
             sourceMaps: true,
             inputSourceMap: true,
+            babelHelpers: 'bundled',
         }),
         commonjs(),
         production && terser(),

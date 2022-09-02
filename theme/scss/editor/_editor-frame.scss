@@ -1,0 +1,54 @@
+// EDITOR FRAME
+// --------------------------------------------------------------------
+
+$editor-frame-padding: 5vw !default;
+
+:root {
+    --sn-editor-frame-padding: #{$editor-frame-padding};
+}
+
+body {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $editor-frame-padding;
+    padding-right: $editor-frame-padding;
+    width: 100%;
+
+    .block-editor-block-list__layout.is-root-container {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .wp-block {
+        max-width: none;
+        flex: 1 1 100%;
+    }
+}
+
+body {
+
+    .block-editor-block-list__layout.is-root-container {
+
+        & > .wp-block[data-align="full"] {
+            margin-left: -1 * $editor-frame-padding;
+            margin-right: -1 * $editor-frame-padding;
+        }
+    }
+
+    .wp-block[data-align="full"] {
+        width: 99vw;
+    }
+
+    .wp-block[data-align="left"], .wp-block[data-align="right"] {
+        width: auto;
+        height: auto;
+    }
+
+    @media only screen and (min-width: 768px) {
+
+        .wp-block[data-align="wide"] {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<?php
+
+namespace Sillynet\Action;
+
+use Sillynet\Domain\Customizer\Setting\ShowBackToTop;
+use Sillynet\Service\Translator;
+use Sillynet\Adretto\Action\FilterHookAction;
+use Sillynet\Adretto\Action\InvokerWordpressHookAction;
+use Sillynet\Adretto\Theme;
+use Sillynet\Adretto\WpTwig\Service\TwigWordpressBridge;
+
+class RegisterTwigGlobalsAction extends InvokerWordpressHookAction implements
+    FilterHookAction
+{
+    public const WP_HOOK = TwigWordpressBridge::FILTER_GLOBALS;
+
+    public function __invoke(...$args): array
+    {
+        $globals = $args[0] ?? [];
+        $container = Theme::getInstance()->getContainer();
+
+        $customGlobals = [
+            'translator' => $container->get(Translator::class),
+            'customizer' => [
+                'showBackToTop' => ShowBackToTop::getValue(),
+            ]
+        ];
+
+        return array_merge($globals, $customGlobals);
+    }
+}

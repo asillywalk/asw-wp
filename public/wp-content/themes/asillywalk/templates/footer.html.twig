@@ -1,0 +1,21 @@
+<div class="footer__main">
+    ooh la la
+    <span class="serif">©</span>
+    2019-{{ date()|date('Y')}} A Silly Walk & Andreas Maros
+</div>
+<div class="footer__legal">
+    {% if has_nav_menu('legal') %}
+        <nav class="footer__nav">
+            {{
+                wp_nav_menu({
+                    'theme_location': 'legal',
+                    'container': null,
+                    'menu_class': 'menu',
+                })
+            }}
+        </nav>
+    {% endif %}
+</div>
+<div class="footer__main">
+    Made with <3 and Wordpress
+</div>

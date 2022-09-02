@@ -1,0 +1,3 @@
+@function theme-image($path: '') {
+    @return url('./img/#{$path}');
+}

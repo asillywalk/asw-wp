@@ -1,0 +1,19 @@
+@use "../variables";
+
+@mixin mq ($breakpoint) {
+    @if $breakpoint == variables.$sm {
+        @media (max-width: $breakpoint) {
+            @content;
+        }
+    }
+    @else if $breakpoint == variables.$md {
+        @media (min-width: $breakpoint) {
+            @content;
+        }
+    }
+    @else if $breakpoint == variables.$lg {
+        @media (min-width: $breakpoint) {
+            @content;
+        }
+    }
+}

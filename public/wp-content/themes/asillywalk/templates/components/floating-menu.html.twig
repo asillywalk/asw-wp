@@ -1,0 +1,59 @@
+<div class="float">
+    {% if has_nav_menu('main') or has_nav_menu('legal') %}
+        <div class="float__item float__item--nav">
+            <div class="float__menu-wrap">
+                {% if has_nav_menu('main') %}
+                    {{
+                        wp_nav_menu({
+                            'theme_location': 'main',
+                            'container': 'nav',
+                            'container_class': 'nav main-nav',
+                            'menu_class': 'menu',
+                        })
+                    }}
+                {% endif %}
+
+                {% if has_nav_menu('main') and has_nav_menu('legal') %}
+                    <hr />
+                {% endif %}
+
+                {% if has_nav_menu('legal') %}
+                    {{
+                        wp_nav_menu({
+                            'theme_location': 'legal',
+                            'container': 'nav',
+                            'container_class': 'nav legal-nav',
+                            'menu_class': 'menu',
+                        })
+                    }}
+                {% endif %}
+            </div>
+
+            <div class="float__container">
+                <a id="menuopen" class="float__link menu-icon">
+                    {% include 'icons/bars' %}
+                </a>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if translator.exists() %}
+        <div class="float__item">
+            <div class="float__container">
+                <ul class="language-switcher language-switcher--float">
+                    {{ translator.renderLanguageSwitcher(postId) }}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if customizer.showBackToTop %}
+        <div class="float__item">
+            <div class="float__container">
+                <a href="#top" class="float__link menu-icon" id="backtotop">
+                    {% include 'icons/angles-up' %}
+                </a>
+            </div>
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,38 @@
+
+/* COLOURS */
+$asw-bg-white: #f0f0f0 !default;
+$asw-bg-black: #0e0e0e !default;
+
+$asw-text-white: #fafafa !default;
+$asw-text-black: #000 !default;
+$asw-text-dark: #222 !default;
+
+$asw-section-bg: rgba($asw-bg-white, 0.8) !default;
+$asw-accent-dark: #40766d !default;
+
+/* FONTS */
+$asw-font-body: Cabin, sans-serif !default;
+$asw-font-deco: Yanone Kaffeesatz, monospace !default;
+
+/* BREAKPOINTS */
+$lg: 790px !default;
+$md: 620px !default;
+$sm: ($md - 1px) !default;
+
+
+/* SPACING */
+$asw-section-padding-x-mobile: 8vw !default;
+$asw-image-float-margin: 2em !default;
+
+
+
+/* SLICK SLIDER */
+$slick-font-path: '../fonts/slick/' !default;
+$slick-arrow-color: $asw-text-black !default;
+$slick-dot-size: 16px !default;
+
+$z-indices: (
+    'footer': 9,
+    'floating-menu': 10,
+    'header': 100,
+)

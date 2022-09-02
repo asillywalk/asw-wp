@@ -1,0 +1,19 @@
+<header class="header {% if is_hero_page %}header--hero{% endif %}">
+    <div class="header-wrap">
+        <div class="header__left">
+            <a href="{{ home_url() }}">
+                {{ get_bloginfo() }}
+            </a>
+        </div>
+        {% block header_navigation %}
+            <div class="header__mid"></div>
+        {% endblock %}
+        <div class="header__right">
+            {% if translator.exists() %}
+                <ul class="language-switcher">
+                    {{ translator.renderLanguageSwitcher(postId) }}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</header>

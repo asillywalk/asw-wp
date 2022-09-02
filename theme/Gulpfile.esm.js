@@ -10,6 +10,8 @@ import flexbugsFixes from 'postcss-flexbugs-fixes';
 import focusWithin from 'postcss-focus-within';
 import pkgVersion from '@gebruederheitz/postcss-pkg-version-to-stylesheet';
 
+import { generateFavicon } from './gulp/favicons.esm.js';
+
 const DEFAULT_CONFIG = {
     postcss: {},
     in: './scss/**/*.scss',
@@ -19,8 +21,8 @@ const DEFAULT_CONFIG = {
 
 const WORDPRESS_FRONTEND_DEFAULT_CONFIG = {
     postcss: { flexbugs: true, focusWithin: true, pkgVersion: true },
-    in: './style.scss',
-    out: '../public/wp-content/themes/ghwp/',
+    in: './scss/style.scss',
+    out: '../public/wp-content/themes/asillywalk/',
     watch: ['style.scss', '!scss/editor/', 'scss/**/*.scss'],
 };
 
@@ -29,10 +31,10 @@ const configFrontend = {
 };
 
 const WORDPRESS_BACKEND_DEFAULT_CONFIG = {
-    in: './style-editor.scss',
-    out: '../public/wp-content/themes/ghwp/',
+    in: './scss/style-editor.scss',
+    out: '../public/wp-content/themes/asillywalk/',
     watch: [
-        'style-editor.scss',
+        './editor/style-editor.scss',
         '!scss/editor/editor-controls.scss',
         'scss/**/*.scss',
     ],
@@ -42,11 +44,11 @@ const configBackend = {
     ...WORDPRESS_BACKEND_DEFAULT_CONFIG,
 };
 
-const configControls = {
-    in: './scss/editor/editor-controls.scss',
-    out: '../public/wp-content/themes/ghwp/',
-    watch: ['scss/editor/editor-controls.scss'],
-};
+// const configControls = {
+//     in: './scss/editor/editor-controls.scss',
+//     out: '../public/wp-content/themes/ghwp/',
+//     watch: ['scss/editor/editor-controls.scss'],
+// };
 
 let CURRENT_TASK_IS_WATCH = false;
 
@@ -112,10 +114,13 @@ const { build: buildFrontend, watch: watchFrontend } =
     getScssBuildAndWatch(configFrontend);
 const { build: buildEditor, watch: watchEditor } =
     getScssBuildAndWatch(configBackend);
-const { build: buildControls, watch: watchControls } =
-    getScssBuildAndWatch(configControls);
+// const { build: buildControls, watch: watchControls } =
+//     getScssBuildAndWatch(configControls);
 
-const watchScssAll = gulp.parallel(watchFrontend, watchEditor, watchControls);
+// const watchScssAll = gulp.parallel(watchFrontend, watchEditor, watchControls);
+const watchScssAll = gulp.parallel(watchFrontend, watchEditor);
 
+export const favicons = gulp.parallel(generateFavicon);
 export const watch = watchScssAll;
-export default gulp.parallel(buildFrontend, buildEditor, buildControls);
+// export default gulp.parallel(buildFrontend, buildEditor, buildControls);
+export default gulp.parallel(buildFrontend, buildEditor);

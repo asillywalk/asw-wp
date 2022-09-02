@@ -1,0 +1,32 @@
+@use '../variables';
+@use '../mixins/responsive';
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+$scroll-margin: 2rem !default;
+$scroll-margin-sm: 5rem !default;
+$scroll-margin--with-header: 8rem !default;
+
+*[id],
+*[name] {
+    scroll-margin-top: $scroll-margin;
+
+    @include responsive.mq(variables.$sm) {
+        scroll-margin-top: $scroll-margin-sm;
+    }
+
+}
+
+
+.content:not(.content--with-hero) *[id],
+.content:not(.content--with-hero) *[name]{
+    scroll-margin-top: $scroll-margin--with-header;
+}

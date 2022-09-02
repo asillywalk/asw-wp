@@ -1,0 +1,13 @@
+// Editor base styles
+@use 'editor/editor-frame';
+
+// Frontend-styles for that true WYSIWYG-feel
+@use 'modules/buttons';
+@use 'modules/links';
+@use 'modules/section';
+
+// Editor components
+@use 'editor/components/discreet-input';
+
+// Editor-specific block overrides
+@use 'editor/blocks/section' as section-overrides;

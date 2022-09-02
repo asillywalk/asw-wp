@@ -1,0 +1,39 @@
+/* Basic styles for all elements */
+@use "../variables";
+@use "../mixins/decorators";
+@use "../mixins/helpers";
+
+@use "sass:color";
+
+*, *:after, *:before {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    width: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0;
+    font-size: 16px;
+
+    &.parade-bg {
+        @include decorators.parade-bg;
+    }
+
+    &:not(.parade-bg) {
+        @include decorators.color-bg;
+    }
+}
+
+
+hr {
+    color: variables.$asw-accent-dark;
+    margin: 2rem 10%;
+    width: 80%;
+}
+
+.sr-only {
+    @include helpers.visually-hidden;
+}

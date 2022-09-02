@@ -4,3 +4,19 @@ theme/node_modules/
 public/wp-content/uploads/
 public/wp-content/languages/
 public/wp-content/plugins/
+.env
+
+debug.log
+*.bak
+
+# IDE
+.idea/
+
+# Builds
+public/wp-content/themes/asillywalk/style.css*
+public/wp-content/themes/asillywalk/style-editor.css*
+public/wp-content/themes/asillywalk/js/editor.js*
+
+
+# temporary: nested package vendor directories
+packages/*/vendor/

@@ -8,12 +8,12 @@ export default {
     input: 'js/main.js',
     external: ['jquery'],
     output: {
-        file: '../public/wp-content/themes/ghwp/js/main.js',
+        file: '../public/wp-content/themes/asillywalk/js/main.js',
         format: 'iife',
         sourcemap: true,
-        globals: {
-            jquery: 'window.jQuery',
-        },
+        // globals: {
+        //     jquery: 'window.jQuery',
+        // },
     },
     plugins: [
         resolve(),

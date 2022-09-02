@@ -1,0 +1,231 @@
+themeTextDomain: &themeTextDomain sillynet
+
+themeSupports:
+  #-- Add default posts and comments RSS feed links to head.
+  - name: automatic-feed-links
+  #-- Let WordPress manage the document title.
+  #-- By adding theme support, we declare that this theme does not use a
+  #-- hard-coded <title> tag in the document head, and expect WordPress to
+  #-- provide it for us.
+  - name: title-tag
+  #-- Enable support for Post Thumbnails on posts and pages.
+  #-- https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+  - name: post-thumbnails
+  #-- Switch default core markup for search form, comment form, and comments
+  #-- to output valid HTML5.
+  - name: html5
+    args:
+      -
+        - 'search-form'
+        - 'comment-form'
+        - 'comment-list'
+        - 'gallery'
+        - 'caption'
+        - 'style'
+        - 'script'
+  #-- Add support for core custom logo.
+  #-- https://codex.wordpress.org/Theme_Logo
+  - name: custom-logo
+    args:
+      -
+        height: 190
+        width: 190
+        flex-width: false
+        flex-height: false
+  #-- Add theme support for selective refresh for widgets.
+  - name: customize-selective-refresh-widgets
+  #-- Add support for Block Styles.
+  - name: wp-block-styles
+  #-- Add support for full and wide align images
+  - name: align-wide
+  #-- Add support for editor styles.
+  - name: editor-styles
+  #-- Add custom editor font sizes.
+  - name: editor-font-sizes
+    args:
+      -
+        -
+          -
+            name: "__('Small', 'sillynet' )"
+            shortName: "__( 'S', 'sillynet' )"
+            size:  19.5
+            slug: small
+  #-- Add custom editor colour palette
+  - name: editor-color-palette
+    args:
+      -
+        -
+          -
+            name: Primary
+            slug: primary
+            color: '#b00'
+  - name: responsive-embeds
+
+menus:
+  legal: A short menu, mostly for legal entries, in the page's footer & side
+  main: The main menu in the floating container to the left
+
+actions:
+  - Sillynet\Action\ExampleAction
+  - Sillynet\Action\EditorStylesAction
+  - Sillynet\Action\InitCustomizerAction
+  - Sillynet\Action\RegisterTwigFunctionsAction
+  - Sillynet\Action\RegisterTwigGlobalsAction
+  - Sillynet\Action\SillyGalleryShortcodeAction
+  - Sillynet\Action\ThemeStylesAction
+
+autoload:
+  # Here you may define classes that should automatically be initialized when
+  # the application starts. Their constructor will be called through the
+  # dependency injection container.
+  - Sillynet\Domain\Metabox\PageHeroMetabox
+  - Sillynet\Domain\PageOrPostOption\PageHero
+  - Sillynet\Domain\PageOrPostOption\IntroAnimation
+  - Sillynet\Domain\ThemeDocumentation
+
+services:
+  # Services are autowired – you should normally only need to type-hint at the
+  # appropriate interface. In case you need more control, however, you can
+  # explicitly define services here.
+
+  # name/alias:
+  #   type: ["factory"|"class"|"parameter"] (default "class")
+  #   lazy: boolean (default false)
+  textDomain:
+    type: parameter
+    value: *themeTextDomain
+  Sillynet\Domain\Metabox\PageHeroMetabox:
+    type: class
+    value: Sillynet\Domain\Metabox\PageHeroMetabox
+  Sillynet\Service\Translator:
+    type: class
+    value: Sillynet\Service\PolyLang
+
+exampleServices:
+  comments.enabled:
+    type: parameter
+    value: true
+  comments.count:
+    type: parameter
+    value: 20
+  comments.options:
+    type: parameter
+    value:
+      - name: option1
+        value: true
+      - name: option2
+        value: 42
+  # Add a service through a factory. It must implement ContainerServiceFactoryFactory.
+  # Factory::getFactory will be called to create the definition. It needs to
+  # return a callable (the actual factory), you could use the factory²'s own
+  # __invoke() or an anonymous function, where you can use type hinting to
+  # inject other services.
+  Name\Space\Service\Interface:
+    type: factory
+    value: My\Service\Factory
+  # Add an object directly by class name
+  # You should not really need this, as autowiring covers it
+  Name\Space\My\Class:
+    type: class
+  # Bind implementation to interface. Useful when multiple implementation exist
+  Name\Space\My\Interface:
+    type: class
+    value: Name\Space\My\Implementation
+  # You should not need this, as it can not be type-hinted against.
+  custom.name.for.thing:
+    type: class
+    value: Name\Space\My\Class
+
+twig:
+  templateShorthand: true
+  globals:
+#    serviceName:
+#      class: Name\Space\Service
+    constantName:
+      value: 42
+
+
+gutenbergAllowedBlocks:
+  # List of allowed custom gutenberg blocks
+  - sillynet/section
+  # List of all default/core blocks. True allows their use, false disables the
+  # block.
+  - core/paragraph
+  - core/image
+  - core/heading
+  - core/gallery
+  - core/list
+  - core/quote
+  - core/audio
+  # (previously core/cover-image)
+  # - core/cover
+  # - core/file
+  - core/video
+  # reusable block
+  - core/block
+  # ======== FORMATTING ======================================================
+  - core/table
+  # - core/verse
+  # - core/code
+  # "classic"
+  # - core/freeform
+  # custom html
+  # - core/html
+  - core/preformatted
+  # - core/pullquote
+  # ========== LAYOUT ========================================================
+  - core/button
+  - core/buttons
+  - core/media-text
+  - core/columns
+  # - core/more
+  # page break
+  # - core/nextpage
+  - core/separator
+  - core/spacer
+  #========== WIDGETS ========================================================
+  - core/shortcode
+  # - core/archives
+  # - core/categories
+  # - core/latest-comments
+  # - core/latest-posts
+  # - core/calendar
+  # - core/rss
+  # - core/search
+  # - core/tag-cloud
+  #========== EMBEDS =========================================================
+  # - core/embed
+  # - core-embed/twitter
+  # - core-embed/youtube
+  # - core-embed/facebook
+  # - core-embed/instagram
+  # - core-embed/wordpress
+  # - core-embed/soundcloud
+  # - core-embed/spotify
+  # - core-embed/flickr
+  # - core-embed/vimeo
+  # - core-embed/animoto
+  # - core-embed/cloudup
+  # - core-embed/collegehumor
+  # - core-embed/crowdsignal
+  # - core-embed/dailymotion
+  # - core-embed/hulu
+  # - core-embed/imgur
+  # - core-embed/issuu
+  # - core-embed/kickstarter
+  # - core-embed/meetup-com
+  # - core-embed/mixcloud
+  # - core-embed/reddit
+  # - core-embed/reverbnation
+  # - core-embed/screencast
+  # - core-embed/scribd
+  # - core-embed/slideshare
+  # - core-embed/smugmug
+  # - core-embed/speaker
+  # - core-embed/speaker-deck
+  # - core-embed/tiktok
+  # - core-embed/ted
+  # - core-embed/tumblr
+  # - core-embed/videopress
+  # - core-embed/wordpress-tv
+  # - core-embed/amazon-kindle
