@@ -48,6 +48,7 @@ workflows:
       - gh/build_assets:
           name: build_assets
           build_task_name: ci-build
+          checkout: true
           node_version: *node_version
           skip_slack: true
           source_dir: *source_dir
