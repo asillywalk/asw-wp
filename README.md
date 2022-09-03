@@ -12,6 +12,8 @@ ___
    - [x] phpstan
    - [ ] phpcs
    - [x] linting tasks as package scripts and in Makefile
+   - [x] ci setup
+   - [x] sonarcloud scans
 
 ## Usage
 
