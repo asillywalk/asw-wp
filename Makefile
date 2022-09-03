@@ -26,6 +26,7 @@ lint:
 #_______________________________________________________________________________
 
 test:
+	cd theme &&\
 	npm i &&\
 	npm run lint
 
@@ -33,6 +34,7 @@ ci-test-php:
 	composer lint
 
 ci-build:
+	cd theme &&\
 	npm i &&\
 	npm run build &&\
 	npm run build:favicons
