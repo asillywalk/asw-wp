@@ -1,0 +1,56 @@
+node_version: &node_version "16"
+php_version: &php_version "8.1"
+source_dir: &source_dir asw-wp
+working_directory: &working_directory /home/circleci/asw-wp
+
+version: 2.1
+orbs:
+  gh: gebruederheitz/wordpress-deployment@1
+jobs:
+  test_composer:
+    executor:
+      name: gh/php
+      php_version: *php_version
+      working_directory: *working_directory
+    steps:
+      - checkout:
+          path: *working_directory
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-
+      - run: composer install -n --prefer-dist
+      - run:
+          name: Run composer-based linting/tests
+          command: make ci-test-php
+      - save_cache:
+          key: v1-dependencies-{{ checksum "composer.json" }}
+          paths:
+            - ./vendor
+workflows:
+  test:
+    jobs:
+      - gh/test:
+          name: test_npm
+          node_modules_path: theme
+          node_version: *node_version
+          skip_slack: true
+          source_dir: *source_dir
+      - test_composer
+      - gh/build_composer:
+          name: build_composer
+          php_version: *php_version
+          skip_slack: true
+          source_dir: *source_dir
+          requires:
+            - test_npm
+            - test_composer
+      - gh/build_assets:
+          name: build_assets
+          build_task_name: ci-build
+          node_version: *node_version
+          skip_slack: true
+          source_dir: *source_dir
+          requires:
+            - test_npm
+            - test_composer
