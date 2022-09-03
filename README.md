@@ -8,9 +8,10 @@ ___
 
  - [ ] Basic documentation
  - [ ] Extended tooling setup: 
-   - [ ] Prettier (PHP)
-   - [ ] phpstan & phpcs
-   - [ ] linting tasks as package scripts and in Makefile
+   - [x] Prettier (PHP)
+   - [x] phpstan
+   - [ ] phpcs
+   - [x] linting tasks as package scripts and in Makefile
 
 ## Usage
 

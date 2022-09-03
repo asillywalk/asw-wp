@@ -17,6 +17,7 @@
             &:first-child,
             &--hero {
                 @include decorators.parade-bg;
+
                 height: 100vh;
                 position: fixed;
                 top: 0;
@@ -29,16 +30,16 @@
     }
 
     &--with-animation {
-        margin-top: 0;
         background: {
             attachment: fixed;
             color: variables.$asw-accent-dark;
             image: images.theme-image('asw_animated.gif');
-            //position: 0 22%;
             position: center;
             repeat: repeat;
             size: contain;
         }
+
+        margin-top: 0;
         padding-top: 100vh;
 
         @include responsive.mq(variables.$md) {
@@ -68,6 +69,7 @@
         right: 0;
         top: 20vh;
     }
+
     position: relative;
     width: 100vw;
 
@@ -173,6 +175,7 @@
                 weight: 400;
                 size: 2em;
             }
+
             margin-bottom: 0.5em;
         }
 
@@ -201,6 +204,7 @@
                 weight: 200;
                 size: 1.2rem; // @FIXME: this is obviously stupid /re: nesting
             }
+
             max-width: 100%;
         }
 
@@ -224,18 +228,21 @@
                 width: 2px;
             }
         }
+
         color: #fff;
         font: {
-            family: YanoneKaffeesatz, sans-serif;
+            family: variables.$asw-font-deco;
             size: 3.3em;
             weight: 100;
         }
+
         margin: {
             bottom: -10px;
             left: -20px;
             right: 0;
             top: 0;
         }
+
         padding-left: 10px;
         position: relative;
         text-shadow: 0 0 3px rgb(20, 200, 100);

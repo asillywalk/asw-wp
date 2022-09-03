@@ -19,5 +19,8 @@ class SillyGalleryShortcodeAction extends ShortcodeAction
 {
     protected static string $shortCodeTag = 'silly-gallery';
 
-    protected static string $responderClassName = SillyGalleryShortcodeResponder::class;
+    protected function getResponderClassName(): string
+    {
+        return SillyGalleryShortcodeResponder::class;
+    }
 }

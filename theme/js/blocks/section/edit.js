@@ -5,9 +5,6 @@ import { DiscreetInput } from '@gebruederheitz/wp-editor-components';
 const { InnerBlocks } = blockEditor;
 
 const Edit = (props) => {
-    const { attributes } = props;
-    const { title } = attributes;
-
     return (
         <section className={'section'}>
             <div id={''} className={'section__content'}>

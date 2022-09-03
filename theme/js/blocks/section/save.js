@@ -2,7 +2,7 @@ import { blockEditor } from 'wp';
 
 const { InnerBlocks } = blockEditor;
 
-const Save = ({ attributes: { title }}) => {
+const Save = ({ attributes: { title } }) => {
     return (
         <section className={'section'}>
             <div id={''} className={'section__content'}>
@@ -12,7 +12,7 @@ const Save = ({ attributes: { title }}) => {
                 </div>
             </div>
         </section>
-    )
+    );
 };
 
 export const save = Save;

@@ -14,8 +14,16 @@ class RegisterTwigGlobalsAction extends InvokerWordpressHookAction implements
 {
     public const WP_HOOK = TwigWordpressBridge::FILTER_GLOBALS;
 
+    /**
+     * @param array{array<string, mixed>} ...$args
+     *
+     * @return array<string, mixed>
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
+     */
     public function __invoke(...$args): array
     {
+        /** @var array<string, mixed> $globals */
         $globals = $args[0] ?? [];
         $container = Theme::getInstance()->getContainer();
 
@@ -23,7 +31,7 @@ class RegisterTwigGlobalsAction extends InvokerWordpressHookAction implements
             'translator' => $container->get(Translator::class),
             'customizer' => [
                 'showBackToTop' => ShowBackToTop::getValue(),
-            ]
+            ],
         ];
 
         return array_merge($globals, $customGlobals);

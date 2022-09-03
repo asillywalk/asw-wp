@@ -15,3 +15,24 @@ favicons:
 
 log:
 	@tail -n 60 -f public/wp-content/debug.log
+
+lint:
+	@ddev exec npm run lint
+	@ddev composer lint
+
+
+#===============================================================================
+#== CI AREA ····································································
+#_______________________________________________________________________________
+
+test:
+	npm i &&\
+	npm run lint
+
+ci-test-php:
+	composer lint
+
+ci-build:
+	npm i &&\
+	npm run build &&\
+	npm run build:favicons

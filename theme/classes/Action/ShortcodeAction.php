@@ -13,11 +13,11 @@ abstract class ShortcodeAction implements CustomAction
 
     protected static string $shortCodeTag = '';
 
-    /** @var class-string<ShortcodeResponder> $responderClassName  */
-    protected static string $responderClassName = '';
-
     private ContainerInterface $container;
 
+    /**
+     * @var array<mixed>|string
+     */
     private array|string $shortcodeArguments = [];
 
     public function __construct(ContainerInterface $c)
@@ -27,6 +27,9 @@ abstract class ShortcodeAction implements CustomAction
         self::addDocumentation();
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function getData(): array
     {
         return is_array($this->shortcodeArguments)
@@ -34,10 +37,22 @@ abstract class ShortcodeAction implements CustomAction
             : [];
     }
 
-    public function handle($shortcodeArguments)
+    /**
+     * @param array<string, mixed> $shortcodeArguments
+     *
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
+    public function handle(array $shortcodeArguments): string
     {
-        $responder = $this->container->get(static::$responderClassName);
+        /** @var ShortcodeResponder $responder */
+        $responder = $this->container->get($this->getResponderClassName());
         $this->shortcodeArguments = $shortcodeArguments;
         return $responder->respond($this);
     }
+
+    /**
+     * @return class-string<ShortcodeResponder>
+     */
+    abstract protected function getResponderClassName(): string;
 }

@@ -12,7 +12,7 @@ class ThemeDocumentation extends DocumentationMenu
 
     public function __construct(
         ?string $title = null,
-        ?string $overridePath = null
+        ?string $overridePath = null,
     ) {
         parent::__construct($title, $overridePath);
         Shortcodes::getInstance();

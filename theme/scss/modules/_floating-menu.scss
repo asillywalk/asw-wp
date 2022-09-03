@@ -13,6 +13,7 @@
         right: auto;
         bottom: -100vh;
     }
+
     max-width: 9vw;
     position: sticky;
     top: 0;
@@ -46,6 +47,7 @@
 
         &--nav {
             @extend .float__item;
+
             align-self: start;
             flex-flow: row nowrap;
             margin-left: -10em;
@@ -84,7 +86,6 @@
                     padding: 5px;
 
                     a {
-                        //display: block;
                         transition: all 200ms ease;
                     }
 
@@ -108,6 +109,7 @@
 
         &--horizontal {
             @extend .float__item--nav;
+
             width: auto;
             max-width: 16em;
             min-width: 16em;
@@ -153,6 +155,7 @@
             size: 1.5em;
             weight: 500;
         }
+
         justify-content: center;
         max-width: 100vw;
         opacity: 1;

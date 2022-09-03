@@ -20,8 +20,13 @@ abstract class ShortcodeResponder extends TwigResponder
         ob_start();
         i(static::$templateName, $templateData);
 
-        return ob_get_clean();
+        return ob_get_clean() ?: '';
     }
 
+    /**
+     * @param ShortcodeAction $action
+     *
+     * @return array<string, mixed>
+     */
     abstract protected function getData(ShortcodeAction $action): array;
 }

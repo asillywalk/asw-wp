@@ -13,7 +13,7 @@ html {
 
 $scroll-margin: 2rem !default;
 $scroll-margin-sm: 5rem !default;
-$scroll-margin--with-header: 8rem !default;
+$scroll-margin-with-header: 8rem !default;
 
 *[id],
 *[name] {
@@ -28,5 +28,5 @@ $scroll-margin--with-header: 8rem !default;
 
 .content:not(.content--with-hero) *[id],
 .content:not(.content--with-hero) *[name]{
-    scroll-margin-top: $scroll-margin--with-header;
+    scroll-margin-top: $scroll-margin-with-header;
 }

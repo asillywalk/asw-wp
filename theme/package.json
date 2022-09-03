@@ -9,6 +9,10 @@
     "build:scripts:editor": "rollup -c .rollup.config.backend.js",
     "build:styles": "gulp",
     "build:favicons": "gulp favicons",
+    "lint": "npm-run-all --parallel lint:styles lint:scripts lint:php",
+    "lint:styles": "stylelint scss/",
+    "lint:scripts": "eslint 'js/**/*.js' js/editor.js",
+    "lint:php": "prettier -c --config .prettierrc ./classes/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npm-run-all --parallel watch:scripts watch:styles",
     "watch:scripts": "rollup -c .rollup.config.backend.js -w",
@@ -30,6 +34,8 @@
   },
   "homepage": "https://github.com/asillywalk/asw-wp#readme",
   "devDependencies": {
+    "@babel/eslint-parser": "^7.18.9",
+    "@babel/eslint-plugin": "^7.18.10",
     "@babel/plugin-transform-react-jsx": "^7.17.3",
     "@babel/preset-env": "^7.16.11",
     "@gebruederheitz/postcss-pkg-version-to-stylesheet": "^1.0.0",
@@ -39,6 +45,10 @@
     "@rollup/plugin-node-resolve": "^13.1.3",
     "autoprefixer": "^10.4.4",
     "cssnano": "^5.1.5",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.2",
     "esm": "^3.2.25",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^1.0.2",
@@ -49,7 +59,11 @@
     "postcss-focus-within": "^5.0.4",
     "prettier": "^2.6.1",
     "rollup": "^2.70.1",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup-plugin-terser": "^7.0.2",
+    "stylelint": "^14.11.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard-scss": "^5.0.0",
+    "stylelint-scss": "^4.3.0"
   },
   "dependencies": {
     "@gebruederheitz/wp-editor-components": "^1.0.6"

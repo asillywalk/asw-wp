@@ -1,0 +1,12 @@
+parameters:
+  level: 9
+  paths:
+    - theme/classes
+  bootstrapFiles:
+    - vendor/wpsyntex/polylang-stubs/polylang-stubs.php
+  excludePaths:
+    - theme/classes/ExampleServiceFactoryFactory.php
+includes:
+# polylang extension already requires and includes the wordpress extension
+#  - vendor/szepeviktor/phpstan-wordpress/extension.neon
+  - vendor/wpsyntex/polylang-phpstan/extension.neon

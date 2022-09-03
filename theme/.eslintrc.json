@@ -2,7 +2,7 @@
     "env": {
         "browser": true,
         "es6": true,
-        "jquery": true
+        "jquery": false
     },
     "extends": ["eslint:recommended", "plugin:react/recommended"],
     "rules": {
@@ -23,11 +23,11 @@
     },
     "settings": {
         "react": {
-            "version": "detect"
+            "version": "16"
         }
     },
     "parserOptions": {
         "sourceType": "module",
-        "ecmaVersion": 2018
+        "ecmaVersion": 2020
     }
 }

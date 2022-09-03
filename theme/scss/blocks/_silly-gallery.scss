@@ -29,7 +29,6 @@
         margin-bottom: 0;
 
         &__image {
-
             &--desktop {
                 display: block;
             }
@@ -50,6 +49,7 @@
 
     &::after {
         --text-content: attr(data-name);
+
         background-color: rgba(0,0,0,.4);
         bottom: -80%;
         content: var(--text-content, 'Name');
@@ -60,10 +60,6 @@
         font-family: variables.$asw_font-deco;
         line-height: 1.5;
         transition-delay: 300ms;
-
-        //@include  mq($md) {
-        //    font-size: 1.5rem;
-        //}
 
         @include responsive.mq(variables.$lg) {
             font-size: 2rem;
@@ -104,7 +100,6 @@
         bottom: 10%;
         height: 100%;
         top: 100%;
-
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;

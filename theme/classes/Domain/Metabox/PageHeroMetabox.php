@@ -2,13 +2,15 @@
 
 namespace Sillynet\Domain\Metabox;
 
-class PageHeroMetabox extends \Sillynet\Adretto\SimplePostOptions\AbstractMetabox
+use Sillynet\Adretto\SimplePostOptions\AbstractMetabox;
+
+class PageHeroMetabox extends AbstractMetabox
 {
-    public static string $key = "sillynet-metabox-page-hero";
+    public static string $key = 'sillynet-metabox-page-hero';
 
-    protected static string $title = "Page hero";
+    protected static string $title = 'Page hero';
 
-//    protected static string $context = "side";
+    //    protected static string $context = "side";
 
-//    protected static array $postTypes = ["post", "page"];
+    //    protected static array $postTypes = ["post", "page"];
 }

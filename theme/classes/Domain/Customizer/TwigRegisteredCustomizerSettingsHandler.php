@@ -12,16 +12,27 @@ abstract class TwigRegisteredCustomizerSettingsHandler extends
     public function __construct()
     {
         parent::__construct();
-        add_filter(TwigWordpressBridge::FILTER_GLOBALS, [$this, 'onFilterTwigGlobals']);
+        add_filter(TwigWordpressBridge::FILTER_GLOBALS, [
+            $this,
+            'onFilterTwigGlobals',
+        ]);
     }
 
+    /**
+     * @param array<string, mixed> $globals
+     *
+     * @return array<string, mixed>
+     */
     public function onFilterTwigGlobals(array $globals): array
     {
         $customGlobals = [];
 
         foreach ($this->getTwigGlobalNames() as $className => $settingName) {
-            $value = $className::getValue();
-            $customGlobals[$settingName] = $value;
+            if (method_exists($className, 'getValue')) {
+                // @phpstan-ignore-next-line
+                $value = $className::getValue();
+                $customGlobals[$settingName] = $value;
+            }
         }
 
         return array_merge($globals, ['customizer' => $customGlobals]);

@@ -9,7 +9,7 @@ class EditorStylesAction extends WordpressHookAction implements ActionHookAction
 {
     public const WP_HOOK = 'after_setup_theme';
 
-    public function __invoke()
+    public function __invoke(): void
     {
         add_editor_style('style-editor.css');
     }

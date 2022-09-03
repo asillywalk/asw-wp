@@ -23,7 +23,7 @@ class InitCustomizerAction implements CustomAction
             'sn-customizer-general',
             'Allgemeine Einstellungen',
             null,
-            [new GeneralSettings()]
+            [new GeneralSettings()],
         );
     }
 
