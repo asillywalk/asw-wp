@@ -1,9 +1,10 @@
 <?php
 
-namespace Sillynet\Action;
+namespace Sillynet\Action\Shortcode;
 
 use Gebruederheitz\Wordpress\Documentation\Annotations\ShortcodeDocumentation;
-use Sillynet\Responder\SillyGalleryShortcodeResponder;
+use Sillynet\Action\Shortcode\ShortcodeAction;
+use Sillynet\Responder\Shortcode\SillyGalleryShortcodeResponder;
 
 /**
  * @ShortcodeDocumentation(

@@ -1,8 +1,9 @@
 <?php
 
-namespace Sillynet\Responder;
+namespace Sillynet\Responder\Shortcode;
 
-use Sillynet\Action\ShortcodeAction;
+use Sillynet\Action\Shortcode\ShortcodeAction;
+use Sillynet\Responder\Shortcode\ShortcodeResponder;
 
 class SillyGalleryShortcodeResponder extends ShortcodeResponder
 {

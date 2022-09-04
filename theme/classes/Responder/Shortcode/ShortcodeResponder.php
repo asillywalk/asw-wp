@@ -1,10 +1,12 @@
 <?php
 
-namespace Sillynet\Responder;
+namespace Sillynet\Responder\Shortcode;
 
-use Sillynet\Action\ShortcodeAction;
+use Sillynet\Action\Shortcode\ShortcodeAction;
 use Sillynet\Adretto\Action\Action;
 use Sillynet\Adretto\WpTwig\Responder\TwigResponder;
+
+use function i;
 
 abstract class ShortcodeResponder extends TwigResponder
 {

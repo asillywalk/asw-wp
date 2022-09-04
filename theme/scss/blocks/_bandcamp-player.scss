@@ -1,0 +1,33 @@
+@use '../variables';
+
+%with-glass-border {
+    border: 14px solid transparent;
+    box-shadow: 0 0 33px -2px variables.$asw-accent-dark;
+}
+
+.media-container {
+    display: flex;
+    justify-content: center;
+    margin: {
+        top: 50px;
+        bottom: 50px;
+    }
+
+    iframe {
+        @extend %with-glass-border;
+
+        width: 700px;
+    }
+
+    .button {
+        display: block;
+        text-align: center;
+        width: 700px;
+        max-width: 100%;
+    }
+}
+
+iframe.bandcamp {
+    height: 150px;
+    width: 700px;
+}

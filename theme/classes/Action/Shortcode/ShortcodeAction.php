@@ -1,11 +1,14 @@
 <?php
 
-namespace Sillynet\Action;
+namespace Sillynet\Action\Shortcode;
 
 use Gebruederheitz\Wordpress\Documentation\Traits\withShortcodeDocumentation;
 use Psr\Container\ContainerInterface;
-use Sillynet\Responder\ShortcodeResponder;
+use Sillynet\Action\Shortcode\SillyGalleryShortcodeAction;
+use Sillynet\Responder\Shortcode\ShortcodeResponder;
 use Sillynet\Adretto\Action\CustomAction;
+
+use function add_shortcode;
 
 abstract class ShortcodeAction implements CustomAction
 {
@@ -38,16 +41,19 @@ abstract class ShortcodeAction implements CustomAction
     }
 
     /**
-     * @param array<string, mixed> $shortcodeArguments
+     * @param string|array<string, mixed> $shortcodeArguments
      *
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function handle(array $shortcodeArguments): string
+    //    public function handle(array $shortcodeArguments): string
+    public function handle(array|string $shortcodeArguments): string
     {
         /** @var ShortcodeResponder $responder */
         $responder = $this->container->get($this->getResponderClassName());
-        $this->shortcodeArguments = $shortcodeArguments;
+        $this->shortcodeArguments = is_array($shortcodeArguments)
+            ? $shortcodeArguments
+            : [];
         return $responder->respond($this);
     }
 

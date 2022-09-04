@@ -71,7 +71,8 @@ actions:
   - Sillynet\Action\InitCustomizerAction
   - Sillynet\Action\RegisterTwigFunctionsAction
   - Sillynet\Action\RegisterTwigGlobalsAction
-  - Sillynet\Action\SillyGalleryShortcodeAction
+  - Sillynet\Action\Shortcode\BandcampPlayerShortcodeAction
+  - Sillynet\Action\Shortcode\SillyGalleryShortcodeAction
   - Sillynet\Action\ThemeStylesAction
 
 autoload:
