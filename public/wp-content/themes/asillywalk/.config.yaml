@@ -74,6 +74,7 @@ actions:
   - Sillynet\Action\Shortcode\BandcampPlayerShortcodeAction
   - Sillynet\Action\Shortcode\SillyGalleryShortcodeAction
   - Sillynet\Action\ThemeStylesAction
+  - Sillynet\Action\RegisterScriptsAction
 
 autoload:
   # Here you may define classes that should automatically be initialized when

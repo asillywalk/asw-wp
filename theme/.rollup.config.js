@@ -1,19 +1,20 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 
 const production = !process.env.ROLLUP_WATCH;
 export default {
     input: 'js/main.js',
-    external: ['jquery'],
+    // external: ['jquery'],
     output: {
         file: '../public/wp-content/themes/asillywalk/js/main.js',
         format: 'iife',
         sourcemap: true,
-        // globals: {
+        globals: {
+            wp: 'wp',
         //     jquery: 'window.jQuery',
-        // },
+        },
     },
     plugins: [
         resolve(),
@@ -31,6 +32,7 @@ export default {
                 ],
             ],
             plugins: ['@babel/plugin-transform-template-literals'],
+            babelHelpers: "bundled"
         }),
         production && terser(),
     ],

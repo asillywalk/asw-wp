@@ -1,4 +1,10 @@
 @use '../variables';
+@use '../mixins/responsive';
+
+.wp-block-buttons {
+    margin-bottom: 1rem;
+    width: 100%;
+}
 
 .wp-block-button {
     &__link {
@@ -18,11 +24,23 @@
             background-color: variables.$asw-accent-dark;
             color: #fff;
         }
+    }
 
-        .wp-block-button.is-style-wide & {
-            display: block;
-            text-align: center;
+    &.is-style-wide .wp-block-button__link {
+        display: block;
+        text-align: center;
+        width: 100%;
+        max-width: 99vw;
+
+        @include responsive.mq(variables.$lg) {
             width: 700px;
+            min-width: 80%;
+            max-width: 95%;
         }
+    }
+
+    &.aligncenter {
+        display: flex;
+        justify-content: center;
     }
 }

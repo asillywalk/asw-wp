@@ -4,6 +4,8 @@ namespace Sillynet\Service;
 
 class PolyLang implements Translator
 {
+    protected const DEFAULT_LANGUAGE = 'de';
+
     public function exists(): bool
     {
         return self::checkPolylang();
@@ -21,6 +23,20 @@ class PolyLang implements Translator
                 'post_id' => $postId,
                 //                'raw' => false,
             ]);
+        }
+    }
+
+    public function getCurrentLanguage(): string
+    {
+        if (self::checkPolylang('pll_current_language')) {
+            $languageSlug = pll_current_language();
+            if (is_string($languageSlug)) {
+                return $languageSlug;
+            } else {
+                return self::DEFAULT_LANGUAGE;
+            }
+        } else {
+            return self::DEFAULT_LANGUAGE;
         }
     }
 

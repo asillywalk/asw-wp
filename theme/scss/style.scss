@@ -1,5 +1,7 @@
 @use "theme-head";
 
+@use '../node_modules/scss-resets/resets/normalize';
+
 @use 'modules/fonts';
 @use 'modules/typography';
 @use 'modules/base';
@@ -12,4 +14,7 @@
 @use 'modules/footer';
 @use 'modules/header';
 @use 'modules/section';
+@use 'blocks/bandcamp-player';
+@use 'blocks/image';
+@use 'blocks/lightboxes';
 @use 'blocks/silly-gallery';
