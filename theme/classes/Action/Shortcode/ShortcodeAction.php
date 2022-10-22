@@ -51,9 +51,15 @@ abstract class ShortcodeAction implements CustomAction
     {
         /** @var ShortcodeResponder $responder */
         $responder = $this->container->get($this->getResponderClassName());
-        $this->shortcodeArguments = is_array($shortcodeArguments)
+        $shortcodeArguments = is_array($shortcodeArguments)
             ? $shortcodeArguments
             : [];
+        $this->shortcodeArguments = shortcode_atts(
+            $this->getDefaultAttributes(),
+            $shortcodeArguments,
+            self::$shortCodeTag
+        );
+        $this->onBeforeRespond();
         return $responder->respond($this);
     }
 
@@ -61,4 +67,16 @@ abstract class ShortcodeAction implements CustomAction
      * @return class-string<ShortcodeResponder>
      */
     abstract protected function getResponderClassName(): string;
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getDefaultAttributes(): array
+    {
+        return [];
+    }
+
+    protected function onBeforeRespond(): void
+    {
+    }
 }

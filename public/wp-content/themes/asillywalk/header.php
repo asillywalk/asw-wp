@@ -14,7 +14,6 @@ if (!isset($post->ID)) {
 
 $hero = PageHero::getValue($post->ID);
 $animation = IntroAnimation::getValue($post->ID);
-error_log('animation? ' . json_encode($animation));
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>

@@ -73,6 +73,8 @@ actions:
   - Sillynet\Action\RegisterTwigGlobalsAction
   - Sillynet\Action\Shortcode\BandcampPlayerShortcodeAction
   - Sillynet\Action\Shortcode\SillyGalleryShortcodeAction
+  - Sillynet\Action\Shortcode\UpcomingEventsShortcodeAction
+  - Sillynet\Action\Shortcode\YoutubePlayerShortcodeAction
   - Sillynet\Action\ThemeStylesAction
   - Sillynet\Action\RegisterScriptsAction
 
