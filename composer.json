@@ -11,7 +11,9 @@
         "sillynet/adretto-extension-simple-post-options": "^0.1.0",
         "gebruederheitz/wp-gutenberg-blocks": "^1.4",
         "gebruederheitz/wp-theme-docs": "^1.0",
-        "gebruederheitz/wp-easy-customizer": "^2.1"
+        "gebruederheitz/wp-easy-customizer": "^2.1",
+        "gebruederheitz/wp-easy-cpt": "^2.1",
+        "nesbot/carbon": "^2.62"
     },
     "license": "UNLICENSED",
     "authors": [

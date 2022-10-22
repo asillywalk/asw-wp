@@ -1,0 +1,145 @@
+<div class="sn-events">
+    {% if next %}
+        <article class="sn-event sn-event--featured">
+            {% set dt = next.getDateTime() %}
+            <time datetime="{{ dt.format('Y-m-d\TH:i:sO') }}">
+                {% set dtf = localDate(dt) %}
+                <span class="sn-event__day">{{ dtf.day }}</span>
+                <span class="sn-event__date">{{ dtf.date }}</span>
+                <span class="sn-event__time">{{ dtf.time }}</span>
+            </time>
+
+            <div class="sn-event__title">
+                <h2>
+                    <span>
+                        {{- next.getTitle() -}}
+                    </span>
+                    {% if next.getVenue() and next.getVenueUrl() %}
+                        <span>
+                            {{- '&nbsp;@&nbsp;'|raw -}}
+                            <a href="{{ next.getVenueUrl() }}" target="_blank" rel="noopener">
+                                {{- next.getVenue() -}}
+                            </a>
+                        </span>
+                    {% elseif next.getVenue() %}
+                            <span>
+                                {{- '&nbsp;@&nbsp;'|raw -}}
+                                {{- next.getVenue() -}}
+                            </span>
+                    {% endif %}
+                </h2>
+            </div>
+
+{#            <div class="sn-event__image">#}
+{#                {{ next.getImageHtml()|raw }}#}
+{#            </div>#}
+
+            <div class="sn-event__location">
+                <h3>{{ next.getLocation() }}</h3>
+            </div>
+            <div class="sn-event__content">
+                {% if next.getRelatedArtists() %}
+                    <div class="sn-event__artists">
+                        <p>
+                            {{ __('mit', 'sillynet') }}
+                            {{ concat_arr(next.getRelatedArtists()) }}
+                        </p>
+                    </div>
+                {% endif %}
+
+                {% set detail = {'label': dateFromNow(next.getDateTime()), 'icon': 'clock'} %}
+                {% include('blocks/components/event-detail') %}
+
+                {% if next.getLocationUrl() %}
+                    {% set detail = {'label': 'Karte', 'icon': 'map-marker', 'url': next.getLocationUrl()} %}
+                    {% include('blocks/components/event-detail') %}
+                {% endif %}
+
+                {% if next.getTicketUrl() %}
+                    {% set detail = {'label': 'Tickets kaufen', 'icon': 'shopping-cart', 'url': next.getTicketUrl()} %}
+                    {% include('blocks/components/event-detail') %}
+                {% endif %}
+
+                {% if next.getFacebookEventUrl() %}
+                    {% set detail = {'label': 'Facebook-Veranstaltung', 'icon': 'facebook', 'url': next.getFacebookEventUrl()} %}
+                    {% include('blocks/components/event-detail') %}
+                {% endif %}
+
+            </div>
+            <a href="{{ next.getPermalink() }}" class="sn-event__details">
+                <span>
+                    >
+                </span>
+            </a>
+        </article>
+
+    {% endif %}
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <article class="sn-event">
+                        {% set dt = post.getDateTime() %}
+                        <time datetime="{{ dt.format('Y-m-d\TH:i:sO') }}">
+                            {% set dtf = localDate(dt) %}
+                            <span class="sn-event__short-date">{{ dtf.shortDate }}</span>
+                            <span class="sn-event__year">{{ dtf.year }}</span>
+                        </time>
+
+                        <div class="sn-event__title">
+                            <h2>
+                                <span>
+                                    {{- post.getTitle() -}}
+                                </span>
+                                {% if post.getVenue() and post.getVenueUrl() %}
+                                    <span>
+                                        {{- '&nbsp;@&nbsp;'|raw -}}
+                                        <a href="{{ post.getVenueUrl() }}" target="_blank" rel="noopener">
+                                            {{- post.getVenue() -}}
+                                        </a>
+                                    </span>
+                                {% elseif post.getVenue() %}
+                                    <span>
+                                        {{- '&nbsp;@&nbsp;'|raw -}}
+                                        {{- post.getVenue() -}}
+                                    </span>
+                                {% endif %}
+                            </h2>
+                        </div>
+
+                        <div class="sn-event__location">
+                            <h3>{{ post.getLocation() }}</h3>
+                        </div>
+
+                        <div class="sn-event__content">
+                            {% if post.getLocationUrl() %}
+                                {% set detail = {'label': 'Karte', 'icon': 'map-marker', 'url': post.getLocationUrl()} %}
+                                {% include('blocks/components/event-detail') %}
+                            {% endif %}
+                            {% if post.getTicketUrl() %}
+                                {% set detail = {'label': 'Tickets kaufen', 'icon': 'shopping-cart', 'url': post.getTicketUrl()} %}
+                                {% include('blocks/components/event-detail') %}
+                            {% endif %}
+                            {% if post.getFacebookEventUrl() %}
+                                {% set detail = {'label': 'Facebook-Veranstaltung', 'icon': 'facebook', 'url': post.getFacebookEventUrl()} %}
+                                {% include('blocks/components/event-detail') %}
+                            {% endif %}
+                        </div>
+
+                        <a href="{{ post.getPermalink() }}" class="sn-event__details">
+                            <span>
+                                >
+                            </span>
+                        </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if not next and not posts %}
+        <p>{{ __('Derzeit sind keine Konzerte bestätigt.', 'sillynet') }}</p>
+        <p>
+            {{ __('Vorschläge?', 'sillynet') }}&nbsp;<a href="mailto:booking@asillywalk.de">booking@asillywalk.de</a>
+        </p>
+    {% endif %}
+</div>

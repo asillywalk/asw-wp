@@ -82,6 +82,7 @@ autoload:
   # Here you may define classes that should automatically be initialized when
   # the application starts. Their constructor will be called through the
   # dependency injection container.
+  - Sillynet\Domain\CustomPostType\EventPostType
   - Sillynet\Domain\Metabox\PageHeroMetabox
   - Sillynet\Domain\PageOrPostOption\PageHero
   - Sillynet\Domain\PageOrPostOption\IntroAnimation

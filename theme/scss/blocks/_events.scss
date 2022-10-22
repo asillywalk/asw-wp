@@ -1,0 +1,310 @@
+@use '../variables';
+@use 'sass:color';
+
+$left-margin: 3rem;
+$breakpoint-sm: 576px;
+$breakpoint-md: 992px;
+
+.sn-events {
+    --sn-event-link-col: 3rem;
+    --sn-event-detail-cols: 3;
+
+    width: 100%;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        & > li {
+            margin-left: 0;
+        }
+    }
+
+    .sn-event {
+        background-color: variables.$asw-bg-black;
+        border-left: 1px solid variables.$asw-accent-light;
+        color: variables.$asw-text-white;
+        display: grid;
+        font-size: 0.6rem;
+        grid-row-gap: 1em;
+        grid-template:
+            'date    link' auto
+            'loc     link' auto
+            'name    link' auto
+            'details link' auto
+            / 1fr var(--sn-event-link-col);
+        overflow: hidden;
+        padding: 2rem 0 2rem 1rem;
+
+        @media screen and (min-width: $breakpoint-md) {
+            --sn-event-link-col: 6rem;
+
+            font-size: 0.8rem;
+            grid-row-gap: 0;
+            grid-template:
+                'date name details link' auto
+                'date loc  details link' auto
+                / 2fr 3fr 2fr var(--sn-event-link-col);
+        }
+
+        p {
+            font-size: 1em;
+        }
+
+        //&__image {
+        //    grid-area: img;
+        //    background-color: variables.$asw-accent-dark;
+        //
+        //    img {
+        //        width: 100%;
+        //        height: auto;
+        //        max-height: 18rem;
+        //        object-fit: contain;
+        //    }
+        //}
+
+        time {
+            align-items: center;
+            color: #ebefef;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-area: date;
+            justify-items: center;
+            padding: 1em;
+
+            .sn-event {
+                &__day {
+                    align-self: end;
+                    font-family: variables.$asw-font-deco;
+                    font-size: 2em;
+                    font-weight: 500;
+                }
+
+                &__date {
+                    font-size: 2em;
+                    font-weight: 700;
+                    text-align: center;
+                }
+
+                &__time {
+                    align-self: start;
+                    font-family: variables.$asw-font-deco;
+                    font-size: 2.2em;
+                    font-weight: 500;
+                }
+
+                &__short-date {
+                    align-self: end;
+                    font-family: variables.$asw-font-deco;
+                    font-size: 3em;
+                    font-weight: 500;
+                }
+
+                &__year {
+                    align-self: start;
+                    font-size: 1.6em;
+                }
+            }
+        }
+
+        &__title {
+            align-items: center;
+            display: flex;
+            grid-area: name;
+            justify-content: center;
+            padding: 0 1em;
+
+            h2 {
+                display: flex;
+                flex-flow: row wrap;
+                font-size: 1.8em;
+                justify-content: center;
+                margin: 0;
+            }
+
+            @media screen and (min-width: $breakpoint-md) {
+                justify-content: flex-start;
+                padding: 0;
+
+                h2 {
+                    justify-content: flex-start;
+                }
+            }
+        }
+
+        &__location {
+            align-items: center;
+            display: flex;
+            grid-area: loc;
+            justify-content: center;
+
+            h3 {
+                font-size: 3.5em;
+                margin: 0;
+                text-shadow: 0 0 4px #000;
+            }
+
+            @media screen and (min-width: $breakpoint-md) {
+                justify-content: flex-start;
+            }
+        }
+
+        &__artists {
+            font-size: .75em;
+            grid-column-start: span var(--sn-event-detail-cols);
+        }
+
+        &__content {
+            align-items: stretch;
+            display: grid;
+            grid-area: details;
+            grid-gap: 0.5em;
+            grid-template-columns: repeat(var(--sn-event-detail-cols), 1fr);
+            padding: 1em 1.5em 0.75em 1.5em;
+
+            .sn-event-detail {
+                align-items: center;
+                border: 1px solid #555;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 0.5em;
+
+                &__icon {
+                    width: 1.25em;
+                }
+
+                &__text {
+                    font-size: .8em;
+                    padding-top: 0.5em;
+                    text-align: center;
+                }
+
+                svg {
+                    fill: currentColor;
+                    height: auto;
+                    width: 100%;
+                }
+
+                &:not(.sn-event--featured .sn-event-detail) {
+                    justify-content: center;
+
+                    .sn-event-detail {
+                        &__text {
+                            visibility: hidden;
+                            position: absolute;
+                            max-height: 0;
+                            max-width: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__details {
+            align-items: center;
+            background-color: variables.$asw-accent-dark;
+            display: flex;
+            grid-area: link;
+            justify-content: center;
+            margin: -2rem 0;
+
+            span {
+                font-size: 2.5em;
+                transition: transform 200ms ease;
+            }
+
+            &:hover span {
+                transform: scale(1.05) translateX(5px);
+            }
+        }
+
+        &--featured {
+            --sn-event-detail-cols: 4;
+
+            border-top: 1px solid variables.$asw-accent-light;
+            border-bottom: 1em solid variables.$asw-accent-dark !important;
+            font-size: 1.5rem;
+            grid-template:
+                'loc     link' auto
+                'date    link' auto
+                'name    link' auto
+                'details link' auto
+                / 1fr var(--sn-event-link-col);
+            padding: 0;
+
+            @media screen and (min-width: $breakpoint-md) {
+                border-bottom: 1px solid variables.$asw-accent-light !important;
+                border-left-color: variables.$asw-accent-dark;
+                border-left-width: $left-margin;
+                grid-template:
+                    'date name    link' auto
+                    'date loc     link' auto
+                    'date details link' auto
+                    / 2fr 4fr var(--sn-event-link-col);
+            }
+
+            //img {
+            //    object-fit: cover;
+            //    width: 100%;
+            //    height: 100%;
+            //    max-height: none;
+            //}
+
+            .sn-event {
+                &__location {
+                    background-color: variables.$asw_accent-dark;
+                    padding: 0.75em 1.5em;
+                }
+
+                &__location h3,
+                &__date {
+                    @media screen and (max-width: $breakpoint-sm) {
+                        font-size: 1.5em !important;
+                    }
+                }
+
+                &__title {
+                    padding: 0 1em;
+
+                    @media screen and (min-width: $breakpoint-md) {
+                        padding: 0.75em 1.5em 0.75em 0;
+                    }
+                }
+
+                &__content {
+                    @media screen and (max-width: $breakpoint-md - 1) {
+                        padding: 0 1em 1em 1em;
+                    }
+
+                    @media screen and (max-width: $breakpoint-sm) {
+                        --sn-event-detail-cols: 2;
+
+                        .sn-event-detail {
+                            font-size: .8em;
+                        }
+                    }
+
+                    @media screen and (min-width: $breakpoint-md) {
+                        padding-left: 0;
+                    }
+                }
+
+                &-detail__icon {
+                    width: 1.8em;
+                }
+            }
+        }
+
+        &:not(&--featured) {
+            @media screen and (min-width: $breakpoint-md) {
+                margin-left: calc(#{$left-margin} - 1px);
+            }
+        }
+
+        &:not(li:last-child > &) {
+            border-bottom: 1px solid variables.$asw-accent-light;
+        }
+    }
+}

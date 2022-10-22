@@ -1,0 +1,19 @@
+{% if detail.url %}
+    <a href="{{ detail.url }}" rel="noreferrer nofollow" target="_blank" class="sn-event-detail" title="{{ __(detail.label, 'sillynet') }}">
+        <span class="sn-event-detail__icon">
+            {% include("icons/#{detail.icon}") %}
+        </span>
+        <span class="sn-event-detail__text">
+            {{ __(detail.label, 'sillynet') }}
+        </span>
+    </a>
+{% else %}
+    <div class="sn-event-detail" title="{{ __(detail.label, 'sillynet') }}">
+        <span class="sn-event-detail__icon">
+            {% include("icons/#{detail.icon}") %}
+        </span>
+            <span class="sn-event-detail__text">
+            {{ __(detail.label, 'sillynet') }}
+        </span>
+    </div>
+{% endif %}

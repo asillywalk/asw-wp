@@ -1,0 +1,55 @@
+{% include 'components/floating-menu' %}
+
+<section class="section section--hero">
+    <div class="section__content">
+        <h1>{{ event.getTitle() }}</h1>
+        <div class="section__body">
+
+            <div class="sn-event-dash">
+                {% set dt = event.getDateTime() %}
+                <time datetime="{{ dt.format('Y-m-d\TH:i:sO') }}">
+                    {% set dtf = localDate(dt) %}
+                    <span class="sn-event__day">{{ dtf.day }}</span>
+                    <span class="sn-event__date">{{ dtf.date }}</span>
+                    <span class="sn-event__time">{{ dtf.time }}</span>
+                </time>
+
+                {% set detail = {'label': dateFromNow(dt), 'icon': 'clock'} %}
+                {% include('blocks/components/event-detail') %}
+
+                {% if event.getLocationUrl() %}
+                    {% set detail = {'label': event.getLocation(), 'icon': 'map-marker', 'url': event.getLocationUrl()} %}
+                {% else %}
+                    {% set detail = {'label': event.getLocation(), 'icon': 'map-marker'} %}
+                {% endif %}
+                {% include('blocks/components/event-detail') %}
+
+                {% if event.getVenue() %}
+                    {% if event.getVenueUrl() %}
+                        {% set detail = {'label': event.getVenue(), 'icon': 'house-chimney', 'url': event.getVenueUrl()} %}
+                    {% else %}
+                        {% set detail = {'label': event.getVenue(), 'icon': 'house-chimney'} %}
+                    {% endif %}
+                    {% include('blocks/components/event-detail') %}
+                {% endif %}
+
+                {% if event.getTicketUrl() %}
+                    {% set detail = {'label': 'Tickets kaufen', 'icon': 'shopping-cart', 'url': event.getTicketUrl()} %}
+                    {% include('blocks/components/event-detail') %}
+                {% endif %}
+
+                {% if event.getFacebookUrl() %}
+                    {% set detail = {'label': 'Facebook-Veranstaltung', 'icon': 'facebook', 'url': event.getFacebookUrl()} %}
+                    {% include('blocks/components/event-detail') %}
+                {% endif %}
+
+            </div>
+
+            <div class="sn-event__image">
+                {{ event.getImageHtml()|raw }}
+            </div>
+
+            {{ event.getDescription()|raw }}
+        </div>
+    </div>
+</section>

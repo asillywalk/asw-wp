@@ -15,6 +15,17 @@
 @use 'modules/header';
 @use 'modules/section';
 @use 'blocks/bandcamp-player';
+@use 'blocks/events';
 @use 'blocks/image';
 @use 'blocks/lightboxes';
 @use 'blocks/silly-gallery';
+
+@use 'variables';
+
+:root {
+    --asw-color-primary: #{variables.$asw-accent-dark};
+    --asw-color-secondary: #{variables.$asw-alt-01};
+    --asw-color-tertiary: #{variables.$asw-alt-02};
+    --asw-color-dark: variables.$asw-bg-black;
+    --asw-color-light: variables.$asw-bg-white;
+}
