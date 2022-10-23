@@ -11,3 +11,11 @@
 
 // Editor-specific block overrides
 @use 'editor/blocks/section' as section-overrides;
+
+figure img {
+    object-fit: contain !important;
+    max-width: 100%;
+    max-height: 50vh;
+    width: 100%;
+    height: auto;
+}
