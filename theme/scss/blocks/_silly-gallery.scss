@@ -53,16 +53,17 @@
         background-color: rgba(0,0,0,.4);
         bottom: -80%;
         content: var(--text-content, 'Name');
-        top: 100%;
         color: #fff;
-        font-size: 1.5rem;
-        text-align: center;
         font-family: variables.$asw_font-deco;
+        font-size: 1.5rem;
         line-height: 1.5;
+        padding: .25em .5em;
+        text-align: center;
         transition-delay: 300ms;
 
         @include responsive.mq(variables.$lg) {
             font-size: 2rem;
+            padding: .5em .75em;
         }
     }
 
