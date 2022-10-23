@@ -58,7 +58,7 @@ body.single-events {
             }
 
             svg {
-                fill: currentColor;
+                fill: currentcolor;
                 height: auto;
                 width: 100%;
             }
@@ -76,7 +76,7 @@ body.single-events {
             float: left;
             margin-right: 2em;
 
-            &:after {
+            &::after {
                 clear: both;
             }
 

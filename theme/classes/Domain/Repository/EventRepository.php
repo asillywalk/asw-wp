@@ -39,7 +39,7 @@ class EventRepository extends CustomPostTypeRepository
             'orderby' => 'event_date',
             'meta_query' => [
                 'event_date' => [
-                    'key' => self::$metaKey.'--event_date',
+                    'key' => self::$metaKey . '--event_date',
                     'compare' => '>',
                     'value' => date('Y-m-d H:i:s'),
                     'type' => 'DATETIME',
@@ -55,11 +55,15 @@ class EventRepository extends CustomPostTypeRepository
     protected static function getMetaValues(int $postId): array
     {
         $meta = parent::getMetaValues($postId);
-        $datetime = get_post_meta($postId, static::$metaKey . '--event_date', true) ??
+        $datetime =
+            get_post_meta($postId, static::$metaKey . '--event_date', true) ??
             null;
 
         if (isset($datetime) && is_string($datetime)) {
-            $parsedDatetime = DateTime::createFromFormat(DateTimeInterface::ISO8601, $datetime);
+            $parsedDatetime = DateTime::createFromFormat(
+                DateTimeInterface::ISO8601,
+                $datetime,
+            );
             if ($parsedDatetime !== false) {
                 $meta[Event::datetimeField] = $parsedDatetime;
             }
@@ -74,7 +78,9 @@ class EventRepository extends CustomPostTypeRepository
     protected function persist(StorableEntity $item): void
     {
         parent::persist($item);
-        $storedDateTime = $item->getDatetime()?->format(DateTimeInterface::ISO8601);
+        $storedDateTime = $item
+            ->getDatetime()
+            ?->format(DateTimeInterface::ISO8601);
         update_post_meta(
             $item->getPostId(),
             static::$metaKey . '--event_date',

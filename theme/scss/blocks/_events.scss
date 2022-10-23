@@ -149,7 +149,7 @@ $breakpoint-md: 992px;
             grid-area: details;
             grid-gap: 0.5em;
             grid-template-columns: repeat(var(--sn-event-detail-cols), 1fr);
-            padding: 1em 1.5em 0.75em 1.5em;
+            padding: 1em 1.5em 0.75em;
 
             .sn-event-detail {
                 align-items: center;
@@ -170,7 +170,7 @@ $breakpoint-md: 992px;
                 }
 
                 svg {
-                    fill: currentColor;
+                    fill: currentcolor;
                     height: auto;
                     width: 100%;
                 }
@@ -256,7 +256,7 @@ $breakpoint-md: 992px;
 
                 &__content {
                     @media screen and (max-width: $breakpoint-md - 1) {
-                        padding: 0 1em 1em 1em;
+                        padding: 0 1em 1em;
                     }
 
                     @media screen and (max-width: $breakpoint-sm) {

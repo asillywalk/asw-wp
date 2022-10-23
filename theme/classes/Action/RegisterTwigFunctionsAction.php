@@ -46,7 +46,9 @@ class RegisterTwigFunctionsAction extends InvokerWordpressHookAction implements
                         'date' => $carbon->isoFormat('DD. MMMM YYYY'),
                         'shortDate' => $carbon->isoFormat('DD.MM.'),
                         'year' => $carbon->isoFormat('YYYY'),
-                        'full' => $carbon->isoFormat('dddd, MMMM D YYYY: HH:mm'),
+                        'full' => $carbon->isoFormat(
+                            'dddd, MMMM D YYYY: HH:mm',
+                        ),
                         'time' => $carbon->isoFormat('HH:mm'),
                     ];
                 },
@@ -79,8 +81,8 @@ class RegisterTwigFunctionsAction extends InvokerWordpressHookAction implements
                 'concat_arr',
                 function (array $arr) {
                     return implode(',', $arr);
-                }
-            ]
+                },
+            ],
         ];
         return array_merge($functions, $customFunctions);
     }

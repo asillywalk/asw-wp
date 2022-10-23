@@ -57,7 +57,7 @@ abstract class ShortcodeAction implements CustomAction
         $this->shortcodeArguments = shortcode_atts(
             $this->getDefaultAttributes(),
             $shortcodeArguments,
-            self::$shortCodeTag
+            self::$shortCodeTag,
         );
         $this->onBeforeRespond();
         return $responder->respond($this);
