@@ -3,6 +3,7 @@
 namespace Sillynet\Responder\Shortcode;
 
 use Sillynet\Action\Shortcode\ShortcodeAction;
+use Sillynet\Utility\Debug;
 
 class YoutubePlayerShortcodeResponder extends ShortcodeResponder
 {
@@ -14,14 +15,9 @@ class YoutubePlayerShortcodeResponder extends ShortcodeResponder
     protected function getData(ShortcodeAction $action): array
     {
         $shortcodeArgs = $action->getData();
-        $parsedArgs = shortcode_atts([
-            'id' => '',
-        ], $shortcodeArgs);
 
         return [
-            'youtube' => [
-                'id' => $parsedArgs['id'],
-            ],
+            'youtube' => $shortcodeArgs,
         ];
     }
 }

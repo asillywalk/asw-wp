@@ -28,4 +28,11 @@ class YoutubePlayerShortcodeAction extends ShortcodeAction
     {
         return YoutubePlayerShortcodeResponder::class;
     }
+
+    protected function getDefaultAttributes(): array
+    {
+        return [
+            'id' => '',
+        ];
+    }
 }
