@@ -42,15 +42,7 @@ class Event implements \Gebruederheitz\Wordpress\Domain\StorableEntity
         $this->description = $post->post_content
             ? do_Blocks($post->post_content)
             : '';
-        $datetime = isset($meta[self::datetimeField])
-            ? DateTime::createFromFormat(
-                DateTimeInterface::ISO8601,
-                $meta[self::datetimeField],
-            )
-            : null;
-        if ($this->datetime !== false) {
-            $this->datetime = $datetime;
-        }
+        $this->datetime = $meta[self::datetimeField] ?? null;
         $this->facebookEventUrl = $meta[self::facebookEventUrlField] ?? null; #
         $this->location = $meta[self::locationField] ?? '';
         $this->locationUrl = $meta[self::locationUrlField] ?? null;
@@ -214,10 +206,10 @@ class Event implements \Gebruederheitz\Wordpress\Domain\StorableEntity
      */
     public function toMetaValues(): array
     {
-        $storedDateTime = $this->datetime?->format(DateTimeInterface::ISO8601);
+//        $storedDateTime = $this->datetime?->format(DateTimeInterface::ISO8601);
         $storedRelatedArtists = json_encode($this->relatedArtists);
         return [
-            self::datetimeField => $storedDateTime,
+//            self::datetimeField => $storedDateTime,
             self::facebookEventUrlField => $this->facebookEventUrl,
             self::locationField => $this->location,
             self::locationUrlField => $this->locationUrl,

@@ -2,12 +2,14 @@
     {% if next %}
         <article class="sn-event sn-event--featured">
             {% set dt = next.getDateTime() %}
-            <time datetime="{{ dt.format('Y-m-d\TH:i:sO') }}">
-                {% set dtf = localDate(dt) %}
-                <span class="sn-event__day">{{ dtf.day }}</span>
-                <span class="sn-event__date">{{ dtf.date }}</span>
-                <span class="sn-event__time">{{ dtf.time }}</span>
-            </time>
+            {% if dt %}
+                <time datetime="{{ dt.format('Y-m-d\TH:i:sO') }}">
+                    {% set dtf = localDate(dt) %}
+                    <span class="sn-event__day">{{ dtf.day }}</span>
+                    <span class="sn-event__date">{{ dtf.date }}</span>
+                    <span class="sn-event__time">{{ dtf.time }}</span>
+                </time>
+            {% endif %}
 
             <div class="sn-event__title">
                 <h2>
@@ -30,10 +32,6 @@
                 </h2>
             </div>
 
-{#            <div class="sn-event__image">#}
-{#                {{ next.getImageHtml()|raw }}#}
-{#            </div>#}
-
             <div class="sn-event__location">
                 <h3>{{ next.getLocation() }}</h3>
             </div>
@@ -47,8 +45,10 @@
                     </div>
                 {% endif %}
 
-                {% set detail = {'label': dateFromNow(next.getDateTime()), 'icon': 'clock'} %}
-                {% include('blocks/components/event-detail') %}
+                {% if dt %}
+                    {% set detail = {'label': dateFromNow(dt), 'icon': 'clock'} %}
+                    {% include('blocks/components/event-detail') %}
+                {% endif %}
 
                 {% if next.getLocationUrl() %}
                     {% set detail = {'label': 'Karte', 'icon': 'map-marker', 'url': next.getLocationUrl()} %}

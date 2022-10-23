@@ -10,7 +10,7 @@ use Sillynet\Responder\Shortcode\EventListShortcodeResponder;
  *     shortcode="upcoming-events",
  *     description="Rendert eine Liste von bevorstehenden Veranstaltungen aus den Einträgen des &quot;Events&quot; Custom-Post-Typs.",
  *     parameters={
- *       "limit": "The maximum number of events to show (default 3)"
+ *       "limit": "The maximum number of events to show (default 6)"
  *     },
  *     examples={
  *       "[upcoming-events /]",

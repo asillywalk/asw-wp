@@ -2,6 +2,9 @@
 @use '../mixins/responsive';
 
 .wp-block-buttons {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 1rem;
     width: 100%;
 }
@@ -10,19 +13,26 @@
     &__link {
         background-color: rgba(#fff, 0.5);
         border-radius: 0;
-        color: #40766d;
+        color: variables.$asw-accent-dark;
         line-height: 1;
         font-size: 1.2rem;
         padding: 0.5em;
-        border: 3px solid #40766d;
+        border: 3px solid variables.$asw-accent-dark;
         font-family: variables.$asw-font-body;
         transition: background-color 300ms 240ms ease-out,
             color 300ms 240ms ease-out;
 
         &:hover,
         &:focus {
-            background-color: variables.$asw-accent-dark;
-            color: #fff;
+            &,
+            &:visited {
+                background-color: variables.$asw-accent-dark;
+                color: #fff;
+            }
+        }
+
+        &:visited {
+            color: variables.$asw-accent-dark;
         }
     }
 

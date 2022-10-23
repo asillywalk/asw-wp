@@ -38,8 +38,8 @@
                     {% include('blocks/components/event-detail') %}
                 {% endif %}
 
-                {% if event.getFacebookUrl() %}
-                    {% set detail = {'label': 'Facebook-Veranstaltung', 'icon': 'facebook', 'url': event.getFacebookUrl()} %}
+                {% if event.getFacebookEventUrl() %}
+                    {% set detail = {'label': 'Facebook-Veranstaltung', 'icon': 'facebook', 'url': event.getFacebookEventUrl()} %}
                     {% include('blocks/components/event-detail') %}
                 {% endif %}
 
@@ -50,6 +50,23 @@
             </div>
 
             {{ event.getDescription()|raw }}
+
         </div>
     </div>
 </section>
+
+{% if event.getTicketUrl() %}
+    <section class="section section--tickets">
+        <div class="section__content">
+            <div class="section__body">
+                <div class="wp-block-buttons is-content-justification-center">
+                    <div class="wp-block-button is-style-wide">
+                        <a href="{{ event.getTicketUrl() }}" class="wp-block-button__link">
+                            {{ __('Tickets kaufen', 'sillynet') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}

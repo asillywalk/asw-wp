@@ -18,7 +18,7 @@ class EventListShortcodeResponder extends ShortcodeResponder
     {
         $data = $action->getData();
         $limit = $data['limit'];
-        $posts = EventRepository::getInstance()->findAll();
+        $posts = EventRepository::getInstance()->findUpcoming($limit);
         $next = array_shift($posts);
 
         return [

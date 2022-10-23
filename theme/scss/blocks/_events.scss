@@ -52,18 +52,6 @@ $breakpoint-md: 992px;
             font-size: 1em;
         }
 
-        //&__image {
-        //    grid-area: img;
-        //    background-color: variables.$asw-accent-dark;
-        //
-        //    img {
-        //        width: 100%;
-        //        height: auto;
-        //        max-height: 18rem;
-        //        object-fit: contain;
-        //    }
-        //}
-
         time {
             align-items: center;
             color: #ebefef;
@@ -244,13 +232,6 @@ $breakpoint-md: 992px;
                     'date details link' auto
                     / 2fr 4fr var(--sn-event-link-col);
             }
-
-            //img {
-            //    object-fit: cover;
-            //    width: 100%;
-            //    height: 100%;
-            //    max-height: none;
-            //}
 
             .sn-event {
                 &__location {
