@@ -49,6 +49,24 @@
         }
     }
 
+    &.is-style-cta .wp-block-button__link {
+        padding: 2em;
+    }
+
+    &.is-style-cta-wide .wp-block-button__link {
+        padding: 2em;
+        display: block;
+        text-align: center;
+        width: 100%;
+        max-width: 99vw;
+
+        @include responsive.mq(variables.$lg) {
+            width: 700px;
+            min-width: 80%;
+            max-width: 95%;
+        }
+    }
+
     &.aligncenter {
         display: flex;
         justify-content: center;
