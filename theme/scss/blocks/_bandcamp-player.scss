@@ -1,9 +1,5 @@
 @use '../variables';
-
-%with-glass-border {
-    border: 14px solid transparent;
-    box-shadow: 0 0 33px -2px variables.$asw-accent-dark;
-}
+@use '../mixins/decorators';
 
 .media-container {
     display: flex;
@@ -14,7 +10,7 @@
     }
 
     iframe {
-        @extend %with-glass-border;
+        @include decorators.with-glass-border;
 
         width: 700px;
     }

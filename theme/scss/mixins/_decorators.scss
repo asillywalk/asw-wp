@@ -79,3 +79,8 @@
         }
     }
 }
+
+@mixin with-glass-border {
+    border: 14px solid transparent;
+    box-shadow: 0 0 33px -2px variables.$asw-accent-dark;
+}

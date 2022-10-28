@@ -17,13 +17,20 @@ const styles = [
     {
         name: 'pieces',
         label: 'Pieces',
-    }
+    },
+    {
+        name: 'media-grid',
+        label: 'Media Grid',
+    },
 ];
 
 registerBlockType('sillynet/section', {
     title: __('Section', 'sillynet'),
     icons: <CropFree />,
-    description: __('Ein Container zur Unterteilung des Inhaltes in Abschnitte', 'sillynet'),
+    description: __(
+        'Ein Container zur Unterteilung des Inhaltes in Abschnitte',
+        'sillynet'
+    ),
     category: 'layout',
     attributes,
     styles,

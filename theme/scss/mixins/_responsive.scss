@@ -5,11 +5,7 @@
         @media (max-width: $breakpoint) {
             @content;
         }
-    } @else if $breakpoint == variables.$md {
-        @media (min-width: $breakpoint) {
-            @content;
-        }
-    } @else if $breakpoint == variables.$lg {
+    } @else {
         @media (min-width: $breakpoint) {
             @content;
         }
