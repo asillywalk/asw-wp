@@ -1,5 +1,5 @@
 export const attributes = {
-    title: {
+    type: {
         type: 'string',
     },
 };

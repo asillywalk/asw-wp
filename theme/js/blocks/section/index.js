@@ -26,7 +26,7 @@ const styles = [
 
 registerBlockType('sillynet/section', {
     title: __('Section', 'sillynet'),
-    icons: <CropFree />,
+    icon: <CropFree />,
     description: __(
         'Ein Container zur Unterteilung des Inhaltes in Abschnitte',
         'sillynet'

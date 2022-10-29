@@ -11,6 +11,7 @@
 
 // Editor-specific block overrides
 @use 'editor/blocks/section' as section-overrides;
+@use 'editor/blocks/grid-tile';
 
 figure img {
     object-fit: contain !important;

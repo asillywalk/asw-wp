@@ -16,7 +16,10 @@ const Edit = (props) => {
                     />
                 </h1>
                 <div className={'section__body'}>
-                    <InnerBlocks />
+                    <InnerBlocks
+                        renderAppender={InnerBlocks.ButtonBlockAppender}
+                        templateLock={false}
+                    />
                 </div>
             </div>
         </section>
