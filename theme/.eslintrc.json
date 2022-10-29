@@ -4,7 +4,12 @@
         "es6": true,
         "jquery": false
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "prettier"
+    ],
     "rules": {
         "indent": [
             "error",
@@ -26,8 +31,13 @@
             "version": "16"
         }
     },
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
         "sourceType": "module",
-        "ecmaVersion": 2020
-    }
+        "ecmaVersion": 2021,
+        "babelOptions": {
+            "presets": ["@babel/preset-env"]
+        }
+    },
+    "plugins": ["react", "prettier", "@babel/eslint-plugin"]
 }
