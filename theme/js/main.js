@@ -9,8 +9,6 @@ function safeExec(name, callback, ...args) {
     }
 }
 
-console.log('blargo');
-
 whenDomReady().then(() => {
     safeExec('Lightboxes', () => {
         const lf = new LightboxFactory();

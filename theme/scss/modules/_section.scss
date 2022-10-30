@@ -171,7 +171,7 @@
         }
 
         section.is-style-media-grid & {
-            --sn-media-grid-col: 140px;
+            --sn-media-grid-col: 120px;
 
             align-items: stretch;
             display: grid;
@@ -185,20 +185,23 @@
             background-color: variables.$asw-accent-dark;
             padding-left: 0.5em;
             padding-right: 0.5em;
+            font-size: .85rem;
 
             @include responsive.mq(variables.$md) {
                 --sn-media-grid-col: 160px;
                 padding-left: 8vw;
                 padding-right: 8vw;
                 grid-gap: 1em;
+                font-size: 1rem;
             }
-
 
             .sn-grid-tile {
                 --sn-grid-colspan: 1;
                 --sn-grid-rowspan: 1;
 
-                aspect-ratio: calc(var(--sn-grid-colspan) / var(--sn-grid-rowspan));
+                aspect-ratio: calc(
+                    var(--sn-grid-colspan) / var(--sn-grid-rowspan)
+                );
                 grid-column-start: span var(--sn-grid-colspan);
                 grid-row-start: span var(--sn-grid-rowspan);
                 background-color: variables.$asw-bg-white;
@@ -214,6 +217,10 @@
                     --sn-grid-colspan: 2;
                 }
 
+                &.is-style-large {
+                    --sn-grid-rowspan: 2;
+                }
+
                 @include responsive.mq(variables.$lg) {
                     &.is-style-wide {
                         --sn-grid-colspan: 3;
@@ -221,7 +228,7 @@
 
                     &.is-style-large {
                         --sn-grid-colspan: 3;
-                        --sn-grid-rowspan: 2;
+                        //--sn-grid-rowspan: 2;
                     }
                 }
 
@@ -249,7 +256,7 @@
                 justify-content: center;
                 margin: -0.45em;
                 padding: 0.5em;
-                width: calc(100% + .9em);
+                width: calc(100% + 0.9em);
 
                 &--bandcamp iframe.bandcamp {
                     height: 120px;
@@ -264,7 +271,7 @@
                 iframe {
                     border: none;
                     box-shadow: none;
-	                width: 100%;
+                    width: 100%;
                 }
             }
 
@@ -279,20 +286,29 @@
 
             .wp-block-buttons {
                 margin: 0;
+            }
 
-                .wp-block-button {
-                    align-self: stretch;
-                    display: flex;
+            .wp-block-button {
+                align-self: stretch;
+                display: flex;
+                flex: 1;
+
+                &__link {
                     flex: 1;
-
-                    &__link {
-                        flex: 1;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
+            }
 
+            figure.sn-icon {
+                flex: 1;
+                margin: 0;
+                width: 100%;
+
+                svg {
+                    --sn-icon-size: 80%;
+                }
             }
         }
 

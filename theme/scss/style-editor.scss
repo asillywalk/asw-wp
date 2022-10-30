@@ -8,10 +8,14 @@
 
 // Editor components
 @use 'editor/components/discreet-input';
+@use 'editor/components/fontawesome-icon';
+@use 'editor/components/fontawesome-picker';
+@use 'editor/components/range-control';
 
 // Editor-specific block overrides
 @use 'editor/blocks/section' as section-overrides;
 @use 'editor/blocks/grid-tile';
+@use 'editor/blocks/icon';
 
 figure img {
     object-fit: contain !important;

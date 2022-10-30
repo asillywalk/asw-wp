@@ -1,0 +1,106 @@
+@use '../variables';
+
+@mixin cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+figure.sn-icon {
+    --sn-icon-size: 3em;
+
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.5em;
+    justify-content: center;
+
+    svg {
+        fill: currentColor;
+        width: var(--sn-icon-size);
+    }
+
+    .wp-block-button__link {
+        font-size: 1em;
+        flex-direction: column;
+        max-height: 100%;
+        width: 100%;
+
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5em;
+    }
+
+    .ghwp-fa-icon {
+        flex: 0 1 auto;
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
+
+    svg:not(.ghwp-fa-icon svg) {
+        //width: 100%;
+        height: auto;
+        flex: 0 1 auto;
+    }
+
+    figcaption {
+        font-family: variables.$asw-font-body;
+        font-size: 1.5em;
+        text-align: center;
+        flex: 0 0 auto;
+    }
+
+    &.is-style-flying-caption,
+    &.is-style-moving-caption {
+        overflow: hidden;
+
+        figcaption {
+            transition: transform 400ms ease;
+            transform: translateY(100%);
+        }
+
+        &:hover {
+            figcaption {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    &.is-style-flying-caption {
+        position: relative;
+
+        &::after {
+            @include cover;
+
+            content: '';
+            background-color: rgba(variables.$asw-accent-dark, 70%);
+            opacity: 0;
+            transition: opacity 300ms ease;
+            z-index: 1;
+        }
+
+        figcaption {
+            @include cover;
+
+            color: variables.$asw-text-white;
+            display: flex;
+            justify-content: center;
+            text-shadow: 0 0 3px variables.$asw-bg-black;
+            align-items: center;
+            z-index: 2;
+        }
+
+        &:hover {
+            &::after {
+                opacity: 1;
+            }
+        }
+    }
+}

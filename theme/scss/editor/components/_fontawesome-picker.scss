@@ -1,0 +1,153 @@
+.sn-editor-fa-input {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    label {
+        flex: 0 0 auto;
+        font-family: sans-serif;
+        font-size: .9em;
+    }
+
+    .ghwp-fontawesome-picker {
+        flex: 1 1 auto;
+    }
+}
+
+.ghwp-fontawesome-picker {
+    position: relative;
+
+    &__button,
+    &__icon {
+        border-radius: 6px;
+        display: inline-block;
+        padding: 0.3em 0.75em;
+
+        &:hover,
+        &.is-active {
+            opacity: 0.9;
+            box-shadow: inset 0 0 1px 1px #000;
+        }
+
+        svg,
+        svg.svg-inline--fa {
+            display: block;
+        }
+    }
+
+    &__button {
+        background-color: rgb(0, 112, 167);
+        color: white;
+    }
+
+    &__controls {
+        align-items: flex-end;
+        display: inline-flex;
+        flex-wrap: wrap;
+        width: calc(100% - 5rem);
+
+        * {
+            margin-bottom: 0;
+        }
+
+        .components-base-control {
+            flex: 1 0 200px;
+        }
+
+        &__reset {
+            flex: 0 1 150px;
+            justify-content: center;
+            background-color: #b00;
+            border-color: #b00;
+            color: #fff;
+            margin-left: 1em;
+        }
+    }
+
+    &__popup {
+        background: #fff;
+        border: 1px solid #333;
+        box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
+        color: #111;
+        max-height: 70vh;
+        overflow-y: auto;
+        padding: 1.5rem;
+        position: absolute;
+        top: 100%;
+        transition: all 450ms ease 250ms, max-height 700ms ease-in 50ms,
+            opacity 50ms ease-out 0ms, visibility 50ms ease-out 0ms;
+        width: 50vw;
+        z-index: 100;
+
+        &.is-hidden {
+            box-shadow: none;
+            max-height: 1px;
+            line-height: 0;
+            margin: 0;
+            opacity: 0;
+            padding: 0;
+            transition: all 500ms ease-out 200ms, max-height 700ms ease-out 0ms,
+                opacity 50ms ease-out 700ms, visibility 50ms ease-out 700ms;
+            visibility: hidden;
+        }
+    }
+
+    &__close {
+        align-items: center;
+        background-color: #fff;
+        border: 2px solid #800;
+        color: #800;
+        display: inline-flex;
+        height: 2.75rem;
+        justify-content: center;
+        margin-left: 2rem;
+        position: sticky;
+        top: 1rem;
+        transition: all 200ms ease;
+        width: 2.75rem;
+        z-index: 110;
+
+        &:hover {
+            border-color: #c00;
+            color: #c00;
+        }
+
+        span.ghwp-fa-icon {
+            display: flex;
+        }
+    }
+
+    &__list {
+        display: grid;
+        font-size: 1.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+        justify-items: center;
+        margin-top: 1rem;
+        padding-bottom: 1.5rem;
+
+        span {
+            width: 48px;
+            display: flex;
+            height: 32px;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            overflow: hidden;
+            transition: all 200ms ease;
+
+            &:hover {
+                background-color: #ccc;
+            }
+
+            &.is-active {
+                background-color: #058;
+                color: #fff;
+
+                &:hover {
+                    color: #ccc;
+                }
+            }
+        }
+    }
+}

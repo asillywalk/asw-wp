@@ -12,7 +12,13 @@
     iframe {
         @include decorators.with-glass-border;
 
-        width: 700px;
+        &.bandcamp {
+            width: 700px;
+        }
+
+        &.soundcloud {
+            height: 100%;
+        }
     }
 
     .button {

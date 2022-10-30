@@ -67,6 +67,8 @@ menus:
 
 actions:
   - Sillynet\Action\EditorStylesAction
+  - Sillynet\Action\Editor\RegisterIconBlockAction
+  - Sillynet\Action\IconListProviderAction
   - Sillynet\Action\InitCustomizerAction
   - Sillynet\Action\RegisterTwigFunctionsAction
   - Sillynet\Action\RegisterTwigGlobalsAction
@@ -152,8 +154,9 @@ twig:
 
 gutenbergAllowedBlocks:
   # List of allowed custom gutenberg blocks
-  - sillynet/section
   - sillynet/grid-tile
+#  - sillynet/icon
+  - sillynet/section
   # List of all default/core blocks. True allows their use, false disables the
   # block.
   - core/paragraph

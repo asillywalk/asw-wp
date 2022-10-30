@@ -1,0 +1,46 @@
+.ghwp-fa-icon {
+    padding: 1px;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow: hidden;
+    font-size: 1rem;
+
+    .components-icon-button & {
+        margin: 0;
+        width: 36px;
+        line-height: 1;
+    }
+
+    &.ghwp-fa-large {
+        font-size: 1.5rem;
+    }
+
+    &.ghwp-fa-larger {
+        font-size: 2rem;
+    }
+
+    &.ghwp-fa-largest {
+        font-size: 3rem;
+    }
+
+    &.ghwp-fa-small {
+        font-size: 0.75rem;
+    }
+
+    .components-icon-button.is-active & {
+        background-color: #cdc;
+        color: #000;
+    }
+}
+
+/* Icon in Iconbox block */
+.ghwp-iconbox .ghwp-iconbox-icon .ghwp-fontawesome-picker {
+    width: 1.5em;
+    height: 1.5em;
+
+    .ghwp-fa-icon {
+        font-size: inherit !important;
+        padding: 0;
+        margin: 0;
+    }
+}

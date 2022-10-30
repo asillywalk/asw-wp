@@ -1,0 +1,94 @@
+.wp-block[data-type='sillynet/icon'] {
+    padding: 2em;
+    margin: 1em 0;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+
+    &.is-selected,
+    &.focus-within {
+        border: 1px solid #333;
+        margin: 2em 0;
+    }
+
+    figure.sn-icon {
+        border: 1px solid #ddd;
+        padding: 1em;
+        display: inline-flex;
+        justify-content: center;
+        flex-direction: column;
+        width: auto;
+        align-items: center;
+        flex: 0 0 auto;
+
+        svg {
+            fill: currentColor;
+            width: 3rem;
+            height: auto;
+        }
+
+        figcaption {
+            font-size: 1.6em;
+
+            input {
+                text-align: center;
+            }
+        }
+    }
+
+    .sn-icon-settings {
+        padding: 2em;
+        border: 1px solid #333;
+        margin: 1em;
+        background-color: #fff;
+        flex: 1 0 80%;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 0.5em;
+
+        .sn-icon-setting {
+            display: grid;
+            grid-template:
+                'icon' 1fr
+                'input' 2fr / 1fr;
+            padding: 1em;
+            background-color: #f5f5f5;
+            justify-items: center;
+            grid-gap: 1em;
+
+            &__icon {
+                grid-area: icon;
+                padding-bottom: 1em;
+                border-bottom: 1px solid #333;
+                align-self: stretch;
+                justify-content: center;
+                display: flex;
+                justify-self: stretch;
+            }
+
+            .components-base-control {
+            }
+
+            .components-range-control {
+                width: 100%;
+
+                &__root {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: .25em;
+                }
+
+                &__number {
+                    margin-left: 0;
+                }
+
+                & > span {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}

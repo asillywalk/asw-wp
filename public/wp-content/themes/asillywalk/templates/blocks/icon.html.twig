@@ -1,0 +1,28 @@
+{% if attributes.iconType == 'theme' %}
+    {% set className = 'sn-icon' %}
+    {% if attributes.className %}
+        {% set className = className ~ ' ' ~ attributes.className %}
+    {% endif %}
+    {% if attributes.linkUrl %}
+        {% set className = className ~ ' wp-block-button' %}
+    {% endif %}
+
+    <figure class="{{ className }}" style="--sn-icon-size: {{ attributes.iconSize }}em;">
+        {% if attributes.linkUrl %}
+            <a class="wp-block-button__link" href="{{ attributes.linkUrl }}" target="_blank" rel="noopener">
+        {% endif %}
+
+        {% include "icons/#{attributes.themeIcon}" %}
+        {% if attributes.hasCaption %}
+            <figcaption>
+                {{ attributes.caption }}
+            </figcaption>
+        {% endif %}
+
+        {% if attributes.linkUrl %}
+            </a>
+        {% endif %}
+    </figure>
+{% else %}
+    {{ content | raw }}
+{% endif %}

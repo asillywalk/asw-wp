@@ -8,6 +8,7 @@ const ALLOWED_BLOCKS_AND_LABELS = {
     'core/shortcode': 'Shortcode',
     'core/buttons': 'Button',
     'core/paragraph': 'Paragraph',
+    'sillynet/icon': 'Icon',
 };
 
 class Edit extends Component {
