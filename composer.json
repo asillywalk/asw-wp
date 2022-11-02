@@ -5,7 +5,7 @@
     "require": {
         "php": "^8.1",
         "wecodemore/wpstarter": "^2.4",
-        "johnpbloch/wordpress-core": "5.9.*@stable",
+        "johnpbloch/wordpress-core": "6.0.*@stable",
         "sillynet/adretto": "^0.1.0",
         "sillynet/adretto-twig": "^0.1.0",
         "sillynet/adretto-extension-simple-post-options": "^0.1.0",
