@@ -46,10 +46,10 @@ class EventPostType extends PostType
     protected $withMedia = true;
 
     /**
-     * @var array List of allowed block types if Gutenberg is enabled. If you
-     *            did not set $withGutenberg to `true` you won't need this.
-     *            Otherwise supply a string-array of block names
-     *            (e.g. `core/button`).
+     * @var array<string> List of allowed block types if Gutenberg is enabled.
+     *                    If you did not set $withGutenberg to `true` you won't
+     *                    need this. Otherwise supply a string-array of block
+     *                    names (e.g. `core/button`).
      */
     protected $allowedBlockTypes = [
         'core/paragraph',
@@ -77,10 +77,6 @@ class EventPostType extends PostType
 
         /** @var Event $event */
         $event = EventRepository::getInstance()->find($post->ID);
-
-        ob_start();
-        var_dump($event->getDatetime()?->format(DateTimeInterface::ISO8601));
-        error_log(ob_get_clean());
 
         MetaForms::makeTextInputField(Event::facebookEventUrlField)
             ->setValue($event->getFacebookEventUrl() ?? '')
@@ -133,11 +129,17 @@ class EventPostType extends PostType
         /** @var Event $event */
         $event = $repo->find($post->ID);
 
-        if (isset($data[Event::facebookEventUrlField])) {
+        if (
+            isset($data[Event::facebookEventUrlField]) &&
+            is_string($data[Event::facebookEventUrlField])
+        ) {
             $event->setFacebookEventUrl($data[Event::facebookEventUrlField]);
         }
 
-        if (isset($data[Event::datetimeField])) {
+        if (
+            isset($data[Event::datetimeField]) &&
+            is_string($data[Event::datetimeField])
+        ) {
             $parsedDatetime = DateTime::createFromFormat(
                 'Y-m-d\TH:i',
                 $data[Event::datetimeField],
@@ -147,23 +149,38 @@ class EventPostType extends PostType
             }
         }
 
-        if (isset($data[Event::locationField])) {
+        if (
+            isset($data[Event::locationField]) &&
+            is_string($data[Event::locationField])
+        ) {
             $event->setLocation($data[Event::locationField]);
         }
 
-        if (isset($data[Event::locationUrlField])) {
+        if (
+            isset($data[Event::locationUrlField]) &&
+            is_string($data[Event::locationUrlField])
+        ) {
             $event->setLocationUrl($data[Event::locationUrlField]);
         }
 
-        if (isset($data[Event::venueField])) {
+        if (
+            isset($data[Event::venueField]) &&
+            is_string($data[Event::venueField])
+        ) {
             $event->setVenue($data[Event::venueField]);
         }
 
-        if (isset($data[Event::venueUrlField])) {
+        if (
+            isset($data[Event::venueUrlField]) &&
+            is_string($data[Event::venueUrlField])
+        ) {
             $event->setVenueUrl($data[Event::venueUrlField]);
         }
 
-        if (isset($data[Event::relatedArtistsField])) {
+        if (
+            isset($data[Event::relatedArtistsField]) &&
+            is_string($data[Event::relatedArtistsField])
+        ) {
             $rawRelatedArtists = explode(
                 ';',
                 $data[Event::relatedArtistsField],
@@ -176,7 +193,10 @@ class EventPostType extends PostType
             }
         }
 
-        if (isset($data[Event::ticketUrlField])) {
+        if (
+            isset($data[Event::ticketUrlField]) &&
+            is_string($data[Event::ticketUrlField])
+        ) {
             $event->setTicketUrl($data[Event::ticketUrlField]);
         }
 

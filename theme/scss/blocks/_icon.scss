@@ -18,21 +18,20 @@ figure.sn-icon {
     justify-content: center;
 
     svg {
-        fill: currentColor;
+        fill: currentcolor;
         width: var(--sn-icon-size);
     }
 
     .wp-block-button__link {
-        font-size: 1em;
+        align-items: center;
+        display: flex;
+        flex: 1;
         flex-direction: column;
+        font-size: 1em;
+        gap: 0.5em;
+        justify-content: center;
         max-height: 100%;
         width: 100%;
-
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5em;
     }
 
     .ghwp-fa-icon {
@@ -45,7 +44,6 @@ figure.sn-icon {
     }
 
     svg:not(.ghwp-fa-icon svg) {
-        //width: 100%;
         height: auto;
         flex: 0 1 auto;
     }

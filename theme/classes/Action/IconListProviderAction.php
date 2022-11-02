@@ -18,6 +18,9 @@ class IconListProviderAction extends InvokerWordpressHookAction implements
         $files = glob(
             get_theme_root() . '/asillywalk/templates/icons/*.html.twig',
         );
+        if (!is_array($files)) {
+            return $localization;
+        }
         array_walk($files, function (&$filename) {
             $filename = preg_replace(
                 '/.*\/icons\/(.*)\.html\.twig/',

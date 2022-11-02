@@ -9,6 +9,10 @@ use Sillynet\Adretto\WpTwig\Service\Twig;
 
 class TwigDynamicBlock extends DynamicBlock
 {
+    /**
+     * @param ?array<string, mixed>  $attributes
+     * @param ?array<string>  $requiredAttributes
+     */
     public static function make(
         string $name,
         string $partial,
@@ -29,8 +33,7 @@ class TwigDynamicBlock extends DynamicBlock
      * Callback for the block registration handler, which will render the block
      * with the attributes provided.
      *
-     * @param array  $attributes
-     * @param string $content
+     * @param array<string, mixed>  $attributes
      *
      * @return false|string|null
      * @throws \Twig\Error\LoaderError

@@ -3,13 +3,12 @@
 namespace Sillynet\Domain\Entity;
 
 use DateTime;
-use DateTimeInterface;
 use Gebruederheitz\Wordpress\Domain\StorableEntity;
 use WP_Post;
 
-class Event implements \Gebruederheitz\Wordpress\Domain\StorableEntity
+class Event implements StorableEntity
 {
-    private ?int $postId;
+    private int $postId;
     private WP_Post $post;
     private string $title;
     private string $description = '';
@@ -18,6 +17,7 @@ class Event implements \Gebruederheitz\Wordpress\Domain\StorableEntity
     private ?string $locationUrl;
     private ?string $venue;
     private ?string $venueUrl;
+    /** @var array<string>  */
     private array $relatedArtists = [];
     private ?string $ticketUrl;
     private ?string $facebookEventUrl;
@@ -36,25 +36,61 @@ class Event implements \Gebruederheitz\Wordpress\Domain\StorableEntity
      */
     public function __construct(WP_Post $post = null, array $meta = [])
     {
+        if (!$post) {
+            return;
+        }
+
         $this->post = $post;
         $this->postId = $post->ID;
         $this->title = $post->post_title;
         $this->description = $post->post_content
             ? do_Blocks($post->post_content)
             : '';
-        $this->datetime = $meta[self::datetimeField] ?? null;
-        $this->facebookEventUrl = $meta[self::facebookEventUrlField] ?? null; #
-        $this->location = $meta[self::locationField] ?? '';
-        $this->locationUrl = $meta[self::locationUrlField] ?? null;
-        $this->venue = $meta[self::venueField] ?? null;
-        $this->venueUrl = $meta[self::venueUrlField] ?? null;
-        $this->relatedArtists = isset($meta[self::relatedArtistsField])
-            ? json_decode($meta[self::relatedArtistsField])
-            : [];
-        $this->ticketUrl = $meta[self::ticketUrlField] ?? null;
+        if (
+            isset($meta[self::datetimeField]) &&
+            is_object($meta[self::datetimeField])
+        ) {
+            $dateTime = $meta[self::datetimeField];
+            $parents = class_parents($dateTime);
+
+            if ($parents && in_array(DateTime::class, $parents)) {
+                /** @var DateTime $dateTime */
+                $this->datetime = $dateTime;
+            }
+        }
+
+        $fbUrl = $meta[self::facebookEventUrlField] ?? null;
+        $this->facebookEventUrl = is_string($fbUrl) ? $fbUrl : null;
+
+        $location = $meta[self::locationField] ?? '';
+        $this->location = is_string($location) ? $location : '';
+
+        $locationUrl = $meta[self::locationUrlField] ?? null;
+        $this->locationUrl = is_string($locationUrl) ? $locationUrl : null;
+
+        $venue = $meta[self::venueField] ?? null;
+        $this->venue = is_string($venue) ? $venue : null;
+
+        $venueUrl = $meta[self::venueUrlField] ?? null;
+        $this->venueUrl = is_string($venueUrl) ? $venueUrl : null;
+
+        $relatedArtists = [];
+        if (
+            isset($meta[self::relatedArtistsField]) &&
+            is_string($meta[self::relatedArtistsField])
+        ) {
+            $parsed = json_decode($meta[self::relatedArtistsField]);
+            if (is_array($parsed)) {
+                $relatedArtists = $parsed;
+            }
+        }
+        $this->relatedArtists = $relatedArtists;
+
+        $ticketUrl = $meta[self::ticketUrlField] ?? null;
+        $this->ticketUrl = is_string($ticketUrl) ? $ticketUrl : null;
     }
 
-    public function getPostId(): ?int
+    public function getPostId(): int
     {
         return $this->postId;
     }
@@ -164,11 +200,17 @@ class Event implements \Gebruederheitz\Wordpress\Domain\StorableEntity
         return $this;
     }
 
+    /**
+     * @return array<string>
+     */
     public function getRelatedArtists(): array
     {
         return $this->relatedArtists;
     }
 
+    /**
+     * @param array<string> $relatedArtists
+     */
     public function setRelatedArtists(array $relatedArtists): self
     {
         $this->relatedArtists = $relatedArtists;
@@ -198,18 +240,24 @@ class Event implements \Gebruederheitz\Wordpress\Domain\StorableEntity
 
     public function getPermalink(): string
     {
-        return get_post_permalink($this->post);
+        $link = get_post_permalink($this->post);
+        if (is_wp_error($link)) {
+            return '';
+        }
+
+        return $link;
     }
 
     /**
      * @inheritDoc
+     *
+     * @NB datetime is stored in a separate meta field by the repository, in
+     * order to allow for sorting & filtering.
      */
     public function toMetaValues(): array
     {
-        //        $storedDateTime = $this->datetime?->format(DateTimeInterface::ISO8601);
         $storedRelatedArtists = json_encode($this->relatedArtists);
         return [
-            //            self::datetimeField => $storedDateTime,
             self::facebookEventUrlField => $this->facebookEventUrl,
             self::locationField => $this->location,
             self::locationUrlField => $this->locationUrl,

@@ -8,7 +8,6 @@ use Gebruederheitz\Wordpress\Domain\CustomPostTypeRepository;
 use Gebruederheitz\Wordpress\Domain\StorableEntity;
 use Sillynet\Domain\CustomPostType\EventPostType;
 use Sillynet\Domain\Entity\Event;
-use WP_Post;
 
 /**
  * @extends CustomPostTypeRepository<Event>
@@ -17,19 +16,19 @@ class EventRepository extends CustomPostTypeRepository
 {
     public static $metaKey = '_sillynet_events';
 
-    /** @var class-string */
+    /** @var class-string<Event> */
     protected static $entityClass = Event::class;
 
-    /** @var class-string */
+    /** @var class-string<EventPostType> */
     protected static $postTypeClass = EventPostType::class;
 
-    /** @var Event[] */
+    /** @inheritdoc */
     protected $entities = [];
 
     /**
      * @param int $limit
      *
-     * @return array<WP_Post>
+     * @return array<int, Event>
      */
     public function findUpcoming(int $limit = 6): array
     {

@@ -39,6 +39,7 @@ class RegisterTwigFunctionsAction extends InvokerWordpressHookAction implements
                             ->get(Translator::class)
                             ->getCurrentLanguage();
                     }
+                    /** @var CarbonInterface $carbon */
                     $carbon = Carbon::instance($dateTime)->locale($locale);
 
                     return [
@@ -68,13 +69,12 @@ class RegisterTwigFunctionsAction extends InvokerWordpressHookAction implements
                             ->get(Translator::class)
                             ->getCurrentLanguage();
                     }
-                    $carbon = Carbon::instance($dateTime);
-                    return $carbon
-                        ->locale($locale)
-                        ->diffForHumans(Carbon::now(), [
-                            'syntax' => CarbonInterface::DIFF_RELATIVE_TO_NOW,
-                            'options' => CarbonInterface::ONE_DAY_WORDS,
-                        ]);
+                    /** @var Carbon $carbon */
+                    $carbon = Carbon::instance($dateTime)->locale($locale);
+                    return $carbon->diffForHumans(Carbon::now(), [
+                        'syntax' => CarbonInterface::DIFF_RELATIVE_TO_NOW,
+                        'options' => CarbonInterface::ONE_DAY_WORDS,
+                    ]);
                 },
             ],
             [

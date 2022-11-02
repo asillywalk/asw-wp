@@ -22,7 +22,7 @@
         flex: 0 0 auto;
 
         svg {
-            fill: currentColor;
+            fill: currentcolor;
             width: 3rem;
             height: auto;
         }
@@ -37,15 +37,14 @@
     }
 
     .sn-icon-settings {
-        padding: 2em;
-        border: 1px solid #333;
-        margin: 1em;
         background-color: #fff;
-        flex: 1 0 80%;
-
+        border: 1px solid #333;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        flex: 1 0 80%;
         grid-gap: 0.5em;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        margin: 1em;
+        padding: 2em;
 
         .sn-icon-setting {
             display: grid;
@@ -65,9 +64,6 @@
                 justify-content: center;
                 display: flex;
                 justify-self: stretch;
-            }
-
-            .components-base-control {
             }
 
             .components-range-control {

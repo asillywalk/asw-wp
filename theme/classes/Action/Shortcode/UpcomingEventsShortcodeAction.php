@@ -30,14 +30,6 @@ class UpcomingEventsShortcodeAction extends ShortcodeAction
         return EventListShortcodeResponder::class;
     }
 
-    protected function onBeforeRespond(): void
-    {
-        $data = $this->getData();
-        if (isset($data['limit'])) {
-            $this->limit = $data['limit'];
-        }
-    }
-
     /**
      * @inheritDoc
      */

@@ -185,10 +185,11 @@
             background-color: variables.$asw-accent-dark;
             padding-left: 0.5em;
             padding-right: 0.5em;
-            font-size: .85rem;
+            font-size: 0.85rem;
 
             @include responsive.mq(variables.$md) {
                 --sn-media-grid-col: 160px;
+
                 padding-left: 8vw;
                 padding-right: 8vw;
                 grid-gap: 1em;
@@ -228,7 +229,6 @@
 
                     &.is-style-large {
                         --sn-grid-colspan: 3;
-                        //--sn-grid-rowspan: 2;
                     }
                 }
 
@@ -238,16 +238,6 @@
                     }
                 }
             }
-
-            //& > * {
-            //    aspect-ratio: 1;
-            //    background-color: variables.$asw-bg-white;
-            //    display: flex;
-            //    align-items: stretch;
-            //    justify-content: stretch;
-            //    padding: 0.5em;
-            //    margin: 0;
-            //}
 
             .media-container {
                 align-items: center;
