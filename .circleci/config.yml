@@ -1,4 +1,4 @@
-node_version: &node_version "16"
+node_version: &node_version "16.18"
 php_version: &php_version "8.1"
 source_dir: &source_dir asw-wp
 working_directory: &working_directory /home/circleci/asw-wp
