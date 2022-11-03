@@ -7,9 +7,18 @@ use Sillynet\Adretto\SimplePostOptions\AbstractBooleanPageOrPostOption;
 
 class PageHero extends AbstractBooleanPageOrPostOption
 {
-    protected static string $key = 'sn-has-page-hero';
+    protected static function getKey(): string
+    {
+        return 'sn-has-page-hero';
+    }
 
-    protected static string $inputLabel = 'Show page hero';
+    protected static function getInputLabel(): string
+    {
+        return 'Show page hero';
+    }
 
-    protected static string $metaboxClassName = PageHeroMetabox::class;
+    protected static function getMetaboxClassName(): string
+    {
+        return PageHeroMetabox::class;
+    }
 }

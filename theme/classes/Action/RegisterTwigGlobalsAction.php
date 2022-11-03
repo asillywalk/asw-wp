@@ -12,7 +12,10 @@ use Sillynet\Adretto\WpTwig\Service\TwigWordpressBridge;
 class RegisterTwigGlobalsAction extends InvokerWordpressHookAction implements
     FilterHookAction
 {
-    public const WP_HOOK = TwigWordpressBridge::FILTER_GLOBALS;
+    public static function getWpHookName(): string
+    {
+        return TwigWordpressBridge::FILTER_GLOBALS;
+    }
 
     /**
      * @param array{array<string, mixed>} ...$args

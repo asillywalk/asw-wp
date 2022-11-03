@@ -8,10 +8,11 @@ use Sillynet\Adretto\WpTwig\Responder\TwigResponder;
 
 use function i;
 
+/**
+ * @extends TwigResponder<ShortcodeAction>
+ */
 abstract class ShortcodeResponder extends TwigResponder
 {
-    protected static string $templateName = '';
-
     /**
      * @param ShortcodeAction $action
      */
@@ -20,10 +21,12 @@ abstract class ShortcodeResponder extends TwigResponder
         $templateData = $this->getData($action);
 
         ob_start();
-        i(static::$templateName, $templateData);
+        i($this->getTemplateName(), $templateData);
 
         return ob_get_clean() ?: '';
     }
+
+    abstract protected function getTemplateName(): string;
 
     /**
      * @param ShortcodeAction $action

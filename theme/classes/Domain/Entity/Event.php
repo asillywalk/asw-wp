@@ -46,17 +46,12 @@ class Event implements StorableEntity
         $this->description = $post->post_content
             ? do_Blocks($post->post_content)
             : '';
+
         if (
             isset($meta[self::datetimeField]) &&
-            is_object($meta[self::datetimeField])
+            is_a($meta[self::datetimeField], DateTime::class)
         ) {
-            $dateTime = $meta[self::datetimeField];
-            $parents = class_parents($dateTime);
-
-            if ($parents && in_array(DateTime::class, $parents)) {
-                /** @var DateTime $dateTime */
-                $this->datetime = $dateTime;
-            }
+            $this->datetime = $meta[self::datetimeField];
         }
 
         $fbUrl = $meta[self::facebookEventUrlField] ?? null;

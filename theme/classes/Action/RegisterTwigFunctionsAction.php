@@ -17,7 +17,10 @@ use Sillynet\Service\Translator;
 class RegisterTwigFunctionsAction extends InvokerWordpressHookAction implements
     FilterHookAction
 {
-    public const WP_HOOK = TwigWordpressBridge::FILTER_FUNCTIONS;
+    public static function getWpHookName(): string
+    {
+        return TwigWordpressBridge::FILTER_FUNCTIONS;
+    }
 
     /**
      * @param array{array<FunctionDefinition>} ...$args

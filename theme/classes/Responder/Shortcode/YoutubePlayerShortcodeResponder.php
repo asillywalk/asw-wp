@@ -7,7 +7,10 @@ use Sillynet\Utility\Debug;
 
 class YoutubePlayerShortcodeResponder extends ShortcodeResponder
 {
-    protected static string $templateName = 'blocks/youtube-player';
+    protected function getTemplateName(): string
+    {
+        return 'blocks/youtube-player';
+    }
 
     /**
      * @inheritDoc

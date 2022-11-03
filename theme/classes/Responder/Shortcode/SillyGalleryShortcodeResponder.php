@@ -7,7 +7,10 @@ use Sillynet\Responder\Shortcode\ShortcodeResponder;
 
 class SillyGalleryShortcodeResponder extends ShortcodeResponder
 {
-    protected static string $templateName = 'blocks/silly-gallery';
+    protected function getTemplateName(): string
+    {
+        return 'blocks/silly-gallery';
+    }
 
     /**
      * @param ShortcodeAction $action

@@ -41,9 +41,4 @@ class RegisterIconBlockAction implements Action, CustomAction
             ['iconType'],
         )->register();
     }
-
-    public function getData(): array
-    {
-        return [];
-    }
 }

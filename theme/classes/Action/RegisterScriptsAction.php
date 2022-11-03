@@ -11,7 +11,10 @@ use Sillynet\Service\PolyLang;
 class RegisterScriptsAction extends InvokerWordpressHookAction implements
     ActionHookAction
 {
-    public const WP_HOOK = 'wp_enqueue_scripts';
+    public static function getWpHookName(): string
+    {
+        return 'wp_enqueue_scripts';
+    }
 
     /**
      * @inheritDoc

@@ -26,9 +26,4 @@ class InitCustomizerAction implements CustomAction
             [new GeneralSettings()],
         );
     }
-
-    public function getData(): array
-    {
-        return [];
-    }
 }

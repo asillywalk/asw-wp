@@ -6,7 +6,10 @@ use Sillynet\Action\Shortcode\ShortcodeAction;
 
 class BandcampPlayerShortcodeResponder extends ShortcodeResponder
 {
-    protected static string $templateName = 'blocks/bandcamp-player';
+    protected function getTemplateName(): string
+    {
+        return 'blocks/bandcamp-player';
+    }
 
     /**
      * @inheritDoc

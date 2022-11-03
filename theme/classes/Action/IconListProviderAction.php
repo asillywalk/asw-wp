@@ -10,7 +10,10 @@ use Sillynet\Adretto\Action\WordpressHookAction;
 class IconListProviderAction extends InvokerWordpressHookAction implements
     FilterHookAction
 {
-    public const WP_HOOK = BlockRegistrar::HOOK_SCRIPT_LOCALIZATION_DATA;
+    public static function getWpHookName(): string
+    {
+        return BlockRegistrar::HOOK_SCRIPT_LOCALIZATION_DATA;
+    }
 
     public function __invoke(...$args)
     {

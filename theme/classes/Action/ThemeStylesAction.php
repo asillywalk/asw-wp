@@ -3,14 +3,18 @@
 namespace Sillynet\Action;
 
 use Sillynet\Adretto\Action\ActionHookAction;
-use Sillynet\Adretto\Action\WordpressHookAction;
+use Sillynet\Adretto\Action\InvokerWordpressHookAction;
 use Sillynet\Adretto\Theme;
 
-class ThemeStylesAction extends WordpressHookAction implements ActionHookAction
+class ThemeStylesAction extends InvokerWordpressHookAction implements
+    ActionHookAction
 {
-    public const WP_HOOK = 'wp_enqueue_scripts';
+    public static function getWpHookName(): string
+    {
+        return 'wp_enqueue_scripts';
+    }
 
-    public function __invoke(): void
+    public function __invoke(...$args): void
     {
         wp_enqueue_style(
             'main-styles',
@@ -18,15 +22,5 @@ class ThemeStylesAction extends WordpressHookAction implements ActionHookAction
             [],
             Theme::getThemeVersion(),
         );
-    }
-
-    public function getHandler(): callable
-    {
-        return $this;
-    }
-
-    public function getData(): array
-    {
-        return [];
     }
 }

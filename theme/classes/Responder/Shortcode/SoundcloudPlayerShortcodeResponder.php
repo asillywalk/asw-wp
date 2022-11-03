@@ -7,7 +7,10 @@ use Sillynet\Utility\Debug;
 
 class SoundcloudPlayerShortcodeResponder extends ShortcodeResponder
 {
-    protected static string $templateName = 'blocks/soundcloud-player';
+    protected function getTemplateName(): string
+    {
+        return 'blocks/soundcloud-player';
+    }
 
     /**
      * @inheritDoc

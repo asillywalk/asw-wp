@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94e24a7b560a7ef1d02270dff178f335",
+    "content-hash": "fa8fe94e801bcf7d0fbbb156b6f7adaa",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1007,16 +1007,16 @@
         },
         {
             "name": "sillynet/adretto",
-            "version": "v0.1.2",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/asillywalk/adretto.git",
-                "reference": "623cee75b5d4b2aaa13280dae9044c676b676de8"
+                "reference": "97837c7e3a04bae178d1eedcf638b6627e5aeacd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asillywalk/adretto/zipball/623cee75b5d4b2aaa13280dae9044c676b676de8",
-                "reference": "623cee75b5d4b2aaa13280dae9044c676b676de8",
+                "url": "https://api.github.com/repos/asillywalk/adretto/zipball/97837c7e3a04bae178d1eedcf638b6627e5aeacd",
+                "reference": "97837c7e3a04bae178d1eedcf638b6627e5aeacd",
                 "shasum": ""
             },
             "require": {
@@ -1049,28 +1049,28 @@
             "description": "Write modern PHP (Action-Domain-Responder) in Wordpress themes.",
             "support": {
                 "issues": "https://github.com/asillywalk/adretto/issues",
-                "source": "https://github.com/asillywalk/adretto/tree/v0.1.2"
+                "source": "https://github.com/asillywalk/adretto/tree/v0.2.1"
             },
-            "time": "2022-08-28T22:26:41+00:00"
+            "time": "2022-11-03T00:16:26+00:00"
         },
         {
             "name": "sillynet/adretto-extension-simple-post-options",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/asillywalk/adretto-extension-simple-post-options.git",
-                "reference": "6eacd1428dce02ed7a1ca7a3a89a2dec7c73d273"
+                "reference": "53b2f2d1b4f5dc8dd83f202479261291710d8e7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asillywalk/adretto-extension-simple-post-options/zipball/6eacd1428dce02ed7a1ca7a3a89a2dec7c73d273",
-                "reference": "6eacd1428dce02ed7a1ca7a3a89a2dec7c73d273",
+                "url": "https://api.github.com/repos/asillywalk/adretto-extension-simple-post-options/zipball/53b2f2d1b4f5dc8dd83f202479261291710d8e7a",
+                "reference": "53b2f2d1b4f5dc8dd83f202479261291710d8e7a",
                 "shasum": ""
             },
             "require": {
                 "gebruederheitz/wp-meta-fields": "^1.0",
                 "php": ">=7.4",
-                "sillynet/adretto": "^0.1.0"
+                "sillynet/adretto": "^0.2.0"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.8",
@@ -1099,28 +1099,28 @@
             "description": "Adretto extension for easy setup of page and post options.",
             "support": {
                 "issues": "https://github.com/asillywalk/adretto-extension-simple-post-options/issues",
-                "source": "https://github.com/asillywalk/adretto-extension-simple-post-options/tree/0.1.0"
+                "source": "https://github.com/asillywalk/adretto-extension-simple-post-options/tree/0.2.0"
             },
-            "time": "2022-08-29T20:35:28+00:00"
+            "time": "2022-11-02T23:48:48+00:00"
         },
         {
             "name": "sillynet/adretto-twig",
-            "version": "0.1.1",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/asillywalk/adretto-twig.git",
-                "reference": "b21324914d7c74c2cfc105b3032d9a8b6e729758"
+                "reference": "618c7cca0ed163a5e2cfe13d08dd482af38f0abf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asillywalk/adretto-twig/zipball/b21324914d7c74c2cfc105b3032d9a8b6e729758",
-                "reference": "b21324914d7c74c2cfc105b3032d9a8b6e729758",
+                "url": "https://api.github.com/repos/asillywalk/adretto-twig/zipball/618c7cca0ed163a5e2cfe13d08dd482af38f0abf",
+                "reference": "618c7cca0ed163a5e2cfe13d08dd482af38f0abf",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": ">=7.4",
-                "sillynet/adretto": "^0.1.0",
+                "sillynet/adretto": "~0.1",
                 "twig/twig": "^3.3"
             },
             "require-dev": {
@@ -1150,9 +1150,9 @@
             "description": "Easily use Twig templates in Wordpress with sillynet/adretto",
             "support": {
                 "issues": "https://github.com/asillywalk/adretto-twig/issues",
-                "source": "https://github.com/asillywalk/adretto-twig/tree/0.1.1"
+                "source": "https://github.com/asillywalk/adretto-twig/tree/0.1.3"
             },
-            "time": "2022-08-29T20:42:20+00:00"
+            "time": "2022-11-03T00:20:43+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",

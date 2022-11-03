@@ -7,9 +7,18 @@ use Sillynet\Adretto\SimplePostOptions\AbstractBooleanPageOrPostOption;
 
 class PageHeroBackground extends AbstractBooleanPageOrPostOption
 {
-    protected static string $key = 'sn-has-page-hero-background';
+    protected static function getKey(): string
+    {
+        return 'sn-has-page-hero-background';
+    }
 
-    protected static string $inputLabel = 'Show background image';
+    protected static function getInputLabel(): string
+    {
+        return 'Show background image';
+    }
 
-    protected static string $metaboxClassName = PageHeroMetabox::class;
+    protected static function getMetaboxClassName(): string
+    {
+        return PageHeroMetabox::class;
+    }
 }

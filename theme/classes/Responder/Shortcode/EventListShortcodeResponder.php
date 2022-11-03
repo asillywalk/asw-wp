@@ -9,7 +9,10 @@ use Sillynet\Domain\Repository\EventRepository;
 
 class EventListShortcodeResponder extends ShortcodeResponder
 {
-    protected static string $templateName = 'blocks/upcoming-events';
+    protected function getTemplateName(): string
+    {
+        return 'blocks/upcoming-events';
+    }
 
     /**
      * @inheritDoc
