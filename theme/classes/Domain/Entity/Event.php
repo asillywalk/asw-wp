@@ -49,6 +49,7 @@ class Event implements StorableEntity
 
         if (
             isset($meta[self::datetimeField]) &&
+            is_object($meta[self::datetimeField]) &&
             is_a($meta[self::datetimeField], DateTime::class)
         ) {
             $this->datetime = $meta[self::datetimeField];
