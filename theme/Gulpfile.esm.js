@@ -11,6 +11,7 @@ import focusWithin from 'postcss-focus-within';
 import pkgVersion from '@gebruederheitz/postcss-pkg-version-to-stylesheet';
 
 import { generateFavicon } from './gulp/favicons.esm.js';
+export { buildSvg, watchSvg } from './gulp/svg-parse.esm.js';
 
 const DEFAULT_CONFIG = {
     postcss: {},
