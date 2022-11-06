@@ -14,8 +14,6 @@ abstract class ShortcodeAction implements CustomAction
 {
     use withShortcodeDocumentation;
 
-    protected static string $shortCodeTag = '';
-
     private ContainerInterface $container;
 
     /**
@@ -23,10 +21,12 @@ abstract class ShortcodeAction implements CustomAction
      */
     private array|string $shortcodeArguments = [];
 
+    abstract protected function getShortcodeTag(): string;
+
     public function __construct(ContainerInterface $c)
     {
         $this->container = $c;
-        add_shortcode(static::$shortCodeTag, [$this, 'handle']);
+        add_shortcode($this->getShortcodeTag(), [$this, 'handle']);
         self::addDocumentation();
     }
 
@@ -46,7 +46,6 @@ abstract class ShortcodeAction implements CustomAction
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    //    public function handle(array $shortcodeArguments): string
     public function handle(array|string $shortcodeArguments): string
     {
         /** @var ShortcodeResponder $responder */
@@ -57,7 +56,7 @@ abstract class ShortcodeAction implements CustomAction
         $this->shortcodeArguments = shortcode_atts(
             $this->getDefaultAttributes(),
             $shortcodeArguments,
-            self::$shortCodeTag,
+            $this->getShortcodeTag(),
         );
         $this->onBeforeRespond();
         return $responder->respond($this);

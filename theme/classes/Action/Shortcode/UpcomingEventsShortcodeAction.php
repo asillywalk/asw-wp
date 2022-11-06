@@ -20,7 +20,10 @@ use Sillynet\Responder\Shortcode\EventListShortcodeResponder;
  */
 class UpcomingEventsShortcodeAction extends ShortcodeAction
 {
-    protected static string $shortCodeTag = 'upcoming-events';
+    protected function getShortCodeTag(): string
+    {
+        return 'upcoming-events';
+    }
 
     /**
      * @inheritDoc

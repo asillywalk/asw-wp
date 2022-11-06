@@ -18,7 +18,10 @@ use Sillynet\Responder\Shortcode\SillyGalleryShortcodeResponder;
  */
 class SillyGalleryShortcodeAction extends ShortcodeAction
 {
-    protected static string $shortCodeTag = 'silly-gallery';
+    protected function getShortCodeTag(): string
+    {
+        return 'silly-gallery';
+    }
 
     protected function getResponderClassName(): string
     {

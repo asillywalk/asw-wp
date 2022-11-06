@@ -17,7 +17,10 @@ use Sillynet\Responder\Shortcode\BandcampPlayerShortcodeResponder;
  */
 class BandcampPlayerShortcodeAction extends ShortcodeAction
 {
-    protected static string $shortCodeTag = 'bandcamp-player';
+    protected function getShortCodeTag(): string
+    {
+        return 'bandcamp-player';
+    }
 
     /**
      * @inheritDoc

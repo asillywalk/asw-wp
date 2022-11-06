@@ -20,7 +20,10 @@ use Sillynet\Responder\Shortcode\SoundcloudPlayerShortcodeResponder;
  */
 class SoundcloudPlayerShortcodeAction extends ShortcodeAction
 {
-    protected static string $shortCodeTag = 'soundcloud-player';
+    protected function getShortCodeTag(): string
+    {
+        return 'soundcloud-player';
+    }
 
     /**
      * @inheritDoc

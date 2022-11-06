@@ -19,7 +19,10 @@ use Sillynet\Responder\Shortcode\YoutubePlayerShortcodeResponder;
  */
 class YoutubePlayerShortcodeAction extends ShortcodeAction
 {
-    protected static string $shortCodeTag = 'youtube-player';
+    protected function getShortcodeTag(): string
+    {
+        return 'youtube-player';
+    }
 
     /**
      * @inheritDoc
