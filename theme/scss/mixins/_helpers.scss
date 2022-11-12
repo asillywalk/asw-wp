@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../variables";
+@use "./responsive";
 
 // Hide visually, not for screenreaders
 @mixin visually-hidden {
@@ -68,4 +69,31 @@
 
 @mixin z-index($componentName) {
     z-index: map.get(variables.$z-indices, $componentName)
+}
+
+
+@mixin mq-debug {
+    &::after {
+        content: ' (sm)';
+
+        @include responsive.mq(variables.$md) {
+            content: ' (md)'
+        }
+
+        @include responsive.mq(variables.$lg) {
+            content: ' (lg)'
+        }
+
+        @include responsive.mq(variables.$xl) {
+            content: ' (xl)'
+        }
+
+        @include responsive.mq(variables.$xxl) {
+            content: ' (2xl)'
+        }
+
+        @include responsive.mq(variables.$xxxl) {
+            content: ' (3xl)'
+        }
+    }
 }

@@ -20,9 +20,11 @@ $asw-font-body: "Cabin", sans-serif !default;
 $asw-font-deco: "Yanone Kaffeesatz", monospace !default;
 
 /* BREAKPOINTS */
+$xxxl: 1380px !default;
+$xxl: 1200px !default;
 $xl: 1024px !default;
 $lg: 790px !default;
-$md: 620px !default;
+$md: 530px !default;
 $sm: ($md - 1px) !default;
 
 

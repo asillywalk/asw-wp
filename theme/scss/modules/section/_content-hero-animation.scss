@@ -1,0 +1,66 @@
+@use '../../variables';
+@use '../../mixins/responsive';
+@use '../../mixins/decorators';
+@use '../../mixins/images';
+
+@mixin styles {
+    .content {
+        width: 100%;
+
+        &--with-hero {
+            margin-top: 60vh;
+
+            @media (min-width: 620px) {
+                margin-top: 110vh;
+            }
+
+            .section {
+                &:first-child,
+                &--hero {
+                    @include decorators.parade-bg;
+
+                    height: 100vh;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    overflow: hidden;
+                    padding: 0;
+                    margin-bottom: -80vh;
+
+                    body.glightbox-open & {
+                        position: fixed;
+                    }
+                }
+            }
+        }
+
+        &--with-animation {
+            background: {
+                attachment: fixed;
+                color: variables.$asw-accent-dark;
+                image: images.theme-image('asw_animated.gif');
+                position: center;
+                repeat: repeat;
+                size: contain;
+            }
+
+            margin-top: 0;
+            padding-top: 100vh;
+
+            @include responsive.mq(variables.$md) {
+                padding-top: 100vh;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .section {
+                &:first-child,
+                &--hero {
+                    position: sticky;
+                    top: 0;
+                }
+            }
+        }
+    }
+}

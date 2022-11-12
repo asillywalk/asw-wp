@@ -22,8 +22,16 @@ const styles = [
         label: 'Wide',
     },
     {
+        name: 'larger',
+        label: 'Larger',
+    },
+    {
         name: 'large',
         label: 'Large',
+    },
+    {
+        name: 'high',
+        label: 'High',
     },
 ];
 

@@ -1,0 +1,144 @@
+@use '../../variables';
+@use '../../mixins/responsive';
+@use '../../mixins/decorators';
+@use '../../mixins/images';
+
+@use './section-heading';
+@use './content-hero-animation' as content;
+@use './media-grid';
+
+@include content.styles;
+
+.section {
+    align-items: flex-end;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: {
+        bottom: 40px;
+        left: 0;
+        right: 0;
+        top: 20vh;
+    }
+
+    position: relative;
+    width: 100vw;
+
+    @include responsive.mq(variables.$md) {
+        padding-left: clamp(0px, 5vw, 8rem);
+    }
+
+    &:last-child,
+    &:last-of-type {
+        padding-bottom: 100vh;
+    }
+
+    &__content {
+        align-content: stretch;
+        display: flex;
+        flex-flow: column nowrap;
+        max-width: 1600px;
+        width: 100vw;
+
+        @include responsive.mq(variables.$md) {
+            width: 90vw;
+        }
+    }
+
+    &__body {
+        background-color: variables.$asw-section-bg;
+        border: 3px solid transparent;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        height: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        padding: {
+            bottom: 20px;
+            left: variables.$asw-section-padding-x-mobile;
+            right: variables.$asw-section-padding-x-mobile;
+            top: 20px;
+        }
+
+        &:first-child,
+        h1 + & {
+            border-top-left-radius: 0;
+        }
+
+        &:last-child {
+            border-bottom-left-radius: 0;
+        }
+
+        & + .section__body {
+            margin-top: 3px;
+        }
+
+        @include responsive.mq(variables.$md) {
+            background-color: adjust_color(
+                variables.$asw-section-bg,
+                $alpha: +0.1
+            );
+            font-size: 14px;
+
+            padding: {
+                left: 40px;
+                right: 40px;
+            }
+
+            &--gallery {
+                padding-left: 5px;
+                padding-right: 5px;
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    margin-left: variables.$asw-section-padding-x-mobile;
+                    margin-right: calc(
+                        #{variables.$asw-section-padding-x-mobile} - 5px
+                    );
+                }
+            }
+        }
+
+        section.is-style-pieces & {
+            align-items: center;
+            background-color: variables.$asw-bg-black;
+            color: variables.$asw-text-white;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            padding: 40px 20px 20px;
+
+            @include responsive.mq(variables.$md) {
+                padding: 60px;
+            }
+        }
+
+        @include media-grid.styles;
+
+        p,
+        span,
+        & > ul > li {
+            font: {
+                family: variables.$asw-font-body;
+                weight: 200;
+                size: 1.2rem; // @FIXME: this is obviously stupid /re: nesting
+            }
+
+            max-width: 100%;
+        }
+
+        & > ul > li > ul > li {
+            // @HACK @FIXME
+            font-size: 1em;
+        }
+
+        & > * {
+            max-width: 100%;
+        }
+    }
+
+    @include section-heading.styles;
+}

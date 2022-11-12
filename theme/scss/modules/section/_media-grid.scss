@@ -1,0 +1,121 @@
+@use '../../variables';
+@use '../../mixins/responsive';
+
+@use './media-grid-children' as children;
+
+// tile dimensions for 12- and 24-column grids, used on md and xl screens
+@mixin twelve-and-twenty-four {
+    --sn-grid-colspan: 6;
+    --sn-grid-rowspan: 3;
+
+    &.is-style-wider {
+        --sn-grid-colspan: 6;
+    }
+
+    &.is-style-wide {
+        --sn-grid-colspan: 12;
+    }
+
+    &.is-style-larger,
+    &.is-style-large {
+        --sn-grid-colspan: 12;
+        --sn-grid-rowspan: 8;
+    }
+
+    &.is-style-high {
+        --sn-grid-colspan: 12;
+        --sn-grid-rowspan: 16;
+    }
+}
+
+@mixin styles {
+    section.is-style-media-grid & {
+        @include children.styles;
+
+        $padding-x-small: 0.5em;
+
+        --sn-grid-colcount: 12;
+
+        align-items: stretch;
+        background-color: variables.$asw-accent-dark;
+        display: grid;
+        font-size: 0.85rem;
+        grid-auto-flow: dense;
+        grid-gap: 0.5em;
+        grid-template-columns: repeat(var(--sn-grid-colcount), 1fr);
+        padding-left: $padding-x-small;
+        padding-right: $padding-x-small;
+
+        @include responsive.mq(variables.$md) {
+            $padding-x: clamp(#{$padding-x-small}, 8vw, 8rem);
+
+            padding-left: $padding-x;
+            padding-right: $padding-x;
+            grid-gap: 1em;
+            font-size: 1rem;
+            grid-template-rows: repeat(auto-fill, minmax(120px, auto));
+        }
+
+        @include responsive.mq(variables.$xl) {
+            --sn-grid-colcount: 24;
+        }
+
+        .sn-grid-tile {
+            --sn-grid-colspan: 12;
+            --sn-grid-rowspan: 12;
+
+            grid-column-start: span var(--sn-grid-colspan);
+
+            @include responsive.mq(variables.$md) {
+                aspect-ratio: calc(
+                    var(--sn-grid-colspan) / var(--sn-grid-rowspan)
+                );
+                grid-row-start: span var(--sn-grid-rowspan);
+            }
+
+            @include responsive.mq(variables.$md) {
+                @include twelve-and-twenty-four;
+            }
+
+            @include responsive.mq(variables.$lg) {
+                --sn-grid-colspan: 4;
+                --sn-grid-rowspan: 2;
+
+                &.is-style-wider {
+                    --sn-grid-colspan: 6;
+                }
+
+                &.is-style-wide {
+                    --sn-grid-colspan: 12;
+                }
+
+                &.is-style-larger {
+                    --sn-grid-colspan: 6;
+                    --sn-grid-rowspan: 6;
+                }
+
+                &.is-style-large {
+                    --sn-grid-colspan: 8;
+                    --sn-grid-rowspan: 6;
+                }
+
+                &.is-style-high {
+                    --sn-grid-colspan: 6;
+                    --sn-grid-rowspan: 10;
+                }
+            }
+
+            @include responsive.mq(variables.$xl) {
+                @include twelve-and-twenty-four;
+
+                &.is-style-wider {
+                    --sn-grid-colspan: 12;
+                }
+            }
+
+            @include responsive.mq(variables.$xxl) {
+                @include twelve-and-twenty-four;
+            }
+        }
+    }
+}

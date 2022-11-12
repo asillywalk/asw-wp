@@ -4,7 +4,7 @@
 // Frontend-styles for that true WYSIWYG-feel
 @use 'modules/buttons';
 @use 'modules/links';
-@use 'modules/section';
+@use 'modules/section/section';
 
 // Editor components
 @use 'editor/components/discreet-input';

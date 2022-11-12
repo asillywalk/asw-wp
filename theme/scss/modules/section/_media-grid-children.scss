@@ -1,0 +1,80 @@
+@use '../../variables';
+@use '../../mixins/responsive';
+
+@mixin styles {
+    .sn-grid-tile {
+        background-color: variables.$asw-bg-white;
+        display: flex;
+        align-items: stretch;
+        justify-content: stretch;
+        padding: 0.5em;
+        margin: 0;
+    }
+
+    .media-container {
+        align-items: center;
+        background-color: variables.$asw-accent-dark;
+        border: 1px solid variables.$asw-bg-white;
+        justify-content: center;
+        margin: -0.45em;
+        overflow: hidden;
+        padding: 0.5em;
+        width: calc(100% + 0.9em);
+
+        &--bandcamp iframe.bandcamp {
+            height: 120px;
+        }
+
+        @include responsive.mq(variables.$xl) {
+            &--bandcamp iframe {
+                height: 150px;
+            }
+        }
+
+        iframe {
+            border: none;
+            box-shadow: none;
+            width: 100%;
+        }
+    }
+
+    p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5em;
+        border: 1px solid variables.$asw-accent-dark;
+        margin: 0;
+    }
+
+    .wp-block-buttons {
+        margin: 0;
+    }
+
+    .wp-block-button {
+        align-self: stretch;
+        display: flex;
+        flex: 1;
+
+        &__link {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    figure.sn-icon {
+        flex: 1;
+        margin: 0;
+        width: 100%;
+
+        svg {
+            --sn-icon-size: 20%;
+
+            @include responsive.mq(variables.$md) {
+                --sn-icon-size: 80%;
+            }
+        }
+    }
+}
