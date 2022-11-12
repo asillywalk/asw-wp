@@ -6,7 +6,6 @@ use Sillynet\Action\Shortcode\ShortcodeAction;
 
 class InstagramEmbedShortcodeResponder extends ShortcodeResponder
 {
-
     protected function getTemplateName(): string
     {
         return 'blocks/instagram-embed';

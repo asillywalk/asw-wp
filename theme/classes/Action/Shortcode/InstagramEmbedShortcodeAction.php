@@ -18,7 +18,6 @@ use Sillynet\Responder\Shortcode\InstagramEmbedShortcodeResponder;
  */
 class InstagramEmbedShortcodeAction extends ShortcodeAction
 {
-
     protected function getShortcodeTag(): string
     {
         return 'instagram';
