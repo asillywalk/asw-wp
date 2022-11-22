@@ -29,7 +29,6 @@ abstract class TwigRegisteredCustomizerSettingsHandler extends
 
         foreach ($this->getTwigGlobalNames() as $className => $settingName) {
             if (method_exists($className, 'getValue')) {
-                // @phpstan-ignore-next-line
                 $value = $className::getValue();
                 $customGlobals[$settingName] = $value;
             }

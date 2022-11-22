@@ -44,12 +44,15 @@ class PolyLang implements Translator
 
     public function getPostIdForLanguage(
         int $postId,
-        string $languageSlug
+        string $languageSlug,
     ): ?int {
         $id = $postId;
 
         if (self::checkPolylang('pll_get_post')) {
             $id = pll_get_post($postId, $languageSlug);
+            if (!is_int($id)) {
+                return $postId;
+            }
         }
 
         return $id;
@@ -61,10 +64,14 @@ class PolyLang implements Translator
 
         if (self::checkPolylang('pll_the_languages')) {
             // Get all languages with a link to home
+            /** @var array<int, array<string, mixed>> $languages */
             $languages = pll_the_languages([
                 'force_home' => true,
                 'raw' => true,
             ]);
+            if (!is_array($languages)) {
+                return [];
+            }
         }
 
         return $languages;

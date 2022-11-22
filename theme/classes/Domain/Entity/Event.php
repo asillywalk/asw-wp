@@ -4,6 +4,7 @@ namespace Sillynet\Domain\Entity;
 
 use DateTime;
 use Gebruederheitz\Wordpress\Domain\StorableEntity;
+use WP_Error;
 use WP_Post;
 
 class Event implements StorableEntity
@@ -236,6 +237,7 @@ class Event implements StorableEntity
 
     public function getPermalink(): string
     {
+        /** @var string|WP_Error $link */
         $link = get_post_permalink($this->post);
         if (is_wp_error($link)) {
             return '';
