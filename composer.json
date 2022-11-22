@@ -9,6 +9,7 @@
         "sillynet/adretto": "^0.2.0",
         "sillynet/adretto-twig": "^0.1.0",
         "sillynet/adretto-extension-simple-post-options": "^0.2.0",
+        "sillynet/adretto-consent-tools": "^0.1.1",
         "gebruederheitz/wp-gutenberg-blocks": "^1.4",
         "gebruederheitz/wp-theme-docs": "^1.0",
         "gebruederheitz/wp-easy-customizer": "^2.1",

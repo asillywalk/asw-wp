@@ -1,5 +1,8 @@
 themeTextDomain: &themeTextDomain sillynet
 
+extensions:
+  - Sillynet\ConsentTools\ConsentToolsExtension
+
 themeSupports:
   #-- Add default posts and comments RSS feed links to head.
   - name: automatic-feed-links
