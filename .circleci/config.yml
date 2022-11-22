@@ -44,6 +44,8 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
+      - gh/persist:
+          source_dir: *source_dir
 
 workflows:
   test:
