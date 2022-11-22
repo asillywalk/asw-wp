@@ -7,9 +7,9 @@ use Carbon\CarbonInterface;
 use DateTime;
 use Sillynet\Adretto\Action\FilterHookAction;
 use Sillynet\Adretto\Action\InvokerWordpressHookAction;
+use Sillynet\Adretto\Contracts\Translator;
 use Sillynet\Adretto\Theme;
 use Sillynet\Adretto\WpTwig\Service\TwigWordpressBridge;
-use Sillynet\Service\Translator;
 
 /**
  * @phpstan-import-type FunctionDefinition from TwigWordpressBridge

@@ -105,7 +105,7 @@ services:
   Sillynet\Domain\Metabox\PageHeroMetabox:
     type: class
     value: Sillynet\Domain\Metabox\PageHeroMetabox
-  Sillynet\Service\Translator:
+  Sillynet\Adretto\Contracts\Translator:
     type: class
     value: Sillynet\Service\PolyLang
 

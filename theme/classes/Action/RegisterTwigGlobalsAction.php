@@ -2,8 +2,8 @@
 
 namespace Sillynet\Action;
 
+use Sillynet\Adretto\Contracts\Translator;
 use Sillynet\Domain\Customizer\Setting\ShowBackToTop;
-use Sillynet\Service\Translator;
 use Sillynet\Adretto\Action\FilterHookAction;
 use Sillynet\Adretto\Action\InvokerWordpressHookAction;
 use Sillynet\Adretto\Theme;

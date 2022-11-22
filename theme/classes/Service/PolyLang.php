@@ -2,6 +2,8 @@
 
 namespace Sillynet\Service;
 
+use Sillynet\Adretto\Contracts\Translator;
+
 class PolyLang implements Translator
 {
     protected const DEFAULT_LANGUAGE = 'de';
@@ -38,6 +40,34 @@ class PolyLang implements Translator
         } else {
             return self::DEFAULT_LANGUAGE;
         }
+    }
+
+    public function getPostIdForLanguage(
+        int $postId,
+        string $languageSlug
+    ): ?int {
+        $id = $postId;
+
+        if (self::checkPolylang('pll_get_post')) {
+            $id = pll_get_post($postId, $languageSlug);
+        }
+
+        return $id;
+    }
+
+    public function getAllLanguages(): array
+    {
+        $languages = [];
+
+        if (self::checkPolylang('pll_the_languages')) {
+            // Get all languages with a link to home
+            $languages = pll_the_languages([
+                'force_home' => true,
+                'raw' => true,
+            ]);
+        }
+
+        return $languages;
     }
 
     protected static function checkPolylang(
