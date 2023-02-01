@@ -52,7 +52,7 @@
     "autoprefixer": "^10.4.4",
     "cssnano": "^5.1.5",
     "del": "^6.1.1",
-    "eslint": "^8.23.0",
+    "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.4",
