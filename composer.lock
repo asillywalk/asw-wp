@@ -2451,16 +2451,16 @@
         },
         {
             "name": "wpsyntex/polylang-stubs",
-            "version": "3.2",
+            "version": "3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/polylang/polylang-stubs.git",
-                "reference": "0bdb0bba7bdeb5dd8b8363d93fdce84ded5f9012"
+                "reference": "af77c264f0017d55384dd715d055b76d177c29ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/polylang/polylang-stubs/zipball/0bdb0bba7bdeb5dd8b8363d93fdce84ded5f9012",
-                "reference": "0bdb0bba7bdeb5dd8b8363d93fdce84ded5f9012",
+                "url": "https://api.github.com/repos/polylang/polylang-stubs/zipball/af77c264f0017d55384dd715d055b76d177c29ab",
+                "reference": "af77c264f0017d55384dd715d055b76d177c29ab",
                 "shasum": ""
             },
             "require-dev": {
@@ -2479,9 +2479,9 @@
             "homepage": "https://polylang.pro",
             "support": {
                 "issues": "https://github.com/polylang/polylang-stubs/issues",
-                "source": "https://github.com/polylang/polylang-stubs/tree/3.2"
+                "source": "https://github.com/polylang/polylang-stubs/tree/3.3.1"
             },
-            "time": "2022-06-13T08:42:39+00:00"
+            "time": "2023-02-20T14:02:22+00:00"
         }
     ],
     "aliases": [],
@@ -2495,5 +2495,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
